@@ -14,10 +14,6 @@ uniform float time_speed = 10.0;
 varying float chaos;
 varying float floored_time;
 
-float random2(vec2 st) {
-    return fract(sin(dot(st.xy,vec2(12.9898,78.233)))*43758.5453123);
-}
-
 float random(float v) {
 	return fract(sin(v) * 43758.5453123);
 }
@@ -36,7 +32,7 @@ void vertex() {
 	
 	vec3 random_pos = vec3(
 		random(UV.x + vertex_floored_time),
-		random((UV.x+ UV.y) + vertex_floored_time),
+		random((UV.x + UV.y) + vertex_floored_time),
 		random(UV.y + vertex_floored_time)
 	) * 2.0 - 1.0;
 	

@@ -5,6 +5,7 @@ extends Node3D
 @onready var spawner: = $PlayingCubeSpawner
 
 var got_cube: = false
+var fullscreen: = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -27,3 +28,13 @@ func _on_getting_cube_consumed()->void:
 		game_ui.show_objective("Go Home")
 		got_cube = true
 	#new_cube.consumed.connect(_on_playing_cube_consumed)
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_fullscreen"):
+		var window: Window = get_window()
+		if fullscreen:
+			window.mode = Window.MODE_WINDOWED
+			fullscreen = false
+		else:
+			window.mode = Window.MODE_EXCLUSIVE_FULLSCREEN
+			fullscreen = true

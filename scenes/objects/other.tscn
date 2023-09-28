@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://ctvj5e350pjo0"]
+[gd_scene load_steps=5 format=3 uid="uid://ctvj5e350pjo0"]
 
+[ext_resource type="Script" path="res://scripts/Interaction/Interactable.gd" id="1_hqm8x"]
 [ext_resource type="Material" uid="uid://dbl24ok2a806b" path="res://assets/materials/mat_others.tres" id="1_mbasj"]
 [ext_resource type="ArrayMesh" uid="uid://d2gr8mb5cc76o" path="res://assets/models/city_others.obj" id="2_seq5w"]
 
@@ -7,13 +8,16 @@
 radius = 0.4
 height = 1.8
 
-[node name="Other" type="AnimatableBody3D"]
+[node name="Other" type="Node3D"]
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="."]
+script = ExtResource("1_hqm8x")
+interaction_label = "Talk"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("CapsuleShape3D_mup3r")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 material_override = ExtResource("1_mbasj")
 mesh = ExtResource("2_seq5w")
-skeleton = NodePath("../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
-shape = SubResource("CapsuleShape3D_mup3r")
