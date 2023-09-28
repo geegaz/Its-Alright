@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://dfpw8hlldadnb"]
+
+[ext_resource type="Script" path="res://scripts/CharacterMovement.gd" id="1_cc8r2"]
+[ext_resource type="Script" path="res://scripts/GlitchUpdater.gd" id="2_32s76"]
+[ext_resource type="Material" uid="uid://cuqb1mo1wdr76" path="res://assets/materials/mat_city.tres" id="3_dv7rt"]
+[ext_resource type="Material" uid="uid://dbl24ok2a806b" path="res://assets/materials/mat_others.tres" id="4_4clhp"]
+[ext_resource type="Script" path="res://scripts/CharacterCamera.gd" id="4_afb5y"]
+[ext_resource type="Script" path="res://scripts/Interaction/Interactor.gd" id="5_h5gw0"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_v1xd5"]
+radius = 0.4
+height = 1.7
+
+[node name="Character" type="CharacterBody3D" node_paths=PackedStringArray("camera", "camera_pivot") groups=["Player"]]
+collision_layer = 2
+script = ExtResource("1_cc8r2")
+camera = NodePath("CameraPivot/Camera3D")
+camera_pivot = NodePath("CameraPivot")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, 0)
+shape = SubResource("CapsuleShape3D_v1xd5")
+
+[node name="GlitchUpdaterCity" type="Node3D" parent="."]
+script = ExtResource("2_32s76")
+glitch_material = ExtResource("3_dv7rt")
+glitch_speed = 2.0
+
+[node name="GlitchUpdaterOthers" type="Node3D" parent="."]
+script = ExtResource("2_32s76")
+glitch_material = ExtResource("4_4clhp")
+glitch_speed = 4.0
+max_distance = 2.0
+
+[node name="CameraPivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot" node_paths=PackedStringArray("pivot")]
+script = ExtResource("4_afb5y")
+pivot = NodePath("..")
+
+[node name="RayCast3D" type="RayCast3D" parent="CameraPivot/Camera3D"]
+target_position = Vector3(0, 0, -3)
+collision_mask = 4
+script = ExtResource("5_h5gw0")
+interact_action = "action_interact"

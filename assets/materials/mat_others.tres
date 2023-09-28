@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://dbl24ok2a806b"]
+
+[ext_resource type="Shader" path="res://assets/shaders/sh_glitch.gdshader" id="1_nvinm"]
+[ext_resource type="Texture2D" uid="uid://c3hh2mwgixycf" path="res://assets/textures/triangles.png" id="2_ybd5l"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_nvinm")
+shader_parameter/player_pos = Vector3(0, 0, 0)
+shader_parameter/primary_color = Color(0, 0, 0, 1)
+shader_parameter/secondary_color = Color(1, 1, 1, 1)
+shader_parameter/chaos_amount = 1.0
+shader_parameter/chaos_start = 5.0
+shader_parameter/chaos_end = 1.0
+shader_parameter/time_speed = 10.0
+shader_parameter/overlay_tex = ExtResource("2_ybd5l")
