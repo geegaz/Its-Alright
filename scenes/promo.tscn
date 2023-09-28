@@ -1,11 +1,12 @@
 [gd_scene load_steps=11 format=3 uid="uid://dlygb4nucbt66"]
 
 [ext_resource type="Environment" uid="uid://ck4rg3ux2si8r" path="res://assets/env_world.tres" id="1_vr3p8"]
-[ext_resource type="Script" path="res://scripts/promo.gd" id="1_vti6g"]
+[ext_resource type="Script" path="res://scripts/Promo.gd" id="1_vti6g"]
 [ext_resource type="Material" uid="uid://cuqb1mo1wdr76" path="res://assets/materials/mat_city.tres" id="2_e06r7"]
 [ext_resource type="Material" uid="uid://r2pbqi3pnyxx" path="res://assets/materials/mat_home.tres" id="3_l7tni"]
 [ext_resource type="ArrayMesh" uid="uid://fkcspolj5mpp" path="res://assets/models/home.obj" id="4_l5x7s"]
 [ext_resource type="ArrayMesh" uid="uid://d2dmrftyivxo8" path="res://assets/models/city.obj" id="7_ggpcn"]
+
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_dfg0o"]
 size = Vector2(100, 100)

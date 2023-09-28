@@ -14,7 +14,6 @@ func consume_cube()->void:
 	var tween:= create_tween()
 	if cube_mesh:
 		tween.set_parallel()
-		tween.tween_property(cube_mesh, "position", Vector3.UP * 0.5, 1.0).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT).as_relative()
 		tween.tween_property(cube_mesh, "scale", Vector3.ZERO, 1.0).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
 	else:
 		tween.tween_interval(1.0)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bi6ph1apeh7dm"]
 
-[ext_resource type="Script" path="res://scripts/Interaction/PlayingCube.gd" id="1_3tisx"]
+[ext_resource type="Script" path="res://scripts/interaction/PlayingCube.gd" id="1_1iey7"]
 [ext_resource type="Material" uid="uid://r2pbqi3pnyxx" path="res://assets/materials/mat_home.tres" id="2_2qirv"]
 [ext_resource type="ArrayMesh" uid="uid://clgao0n5yhiwr" path="res://assets/models/home_cube.obj" id="2_k5gnk"]
 [ext_resource type="Material" uid="uid://rghu83iy6ixp" path="res://assets/materials/mat_cube.tres" id="2_mylhu"]
@@ -12,7 +12,7 @@ points = PackedVector3Array(0.375, 0.5, 0.375, 0.375, 0.5, -0.375, -0.375, 0.5, 
 collision_layer = 4
 collision_mask = 7
 can_sleep = false
-script = ExtResource("1_3tisx")
+script = ExtResource("1_1iey7")
 cube_mesh = NodePath("MeshInstance3D")
 target_material = ExtResource("2_2qirv")
 interaction_label = "Play"

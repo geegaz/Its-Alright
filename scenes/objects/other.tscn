@@ -1,23 +1,75 @@
-[gd_scene load_steps=5 format=3 uid="uid://ctvj5e350pjo0"]
+[gd_scene load_steps=11 format=3 uid="uid://t7hk4aq50xtw"]
 
-[ext_resource type="Script" path="res://scripts/Interaction/Interactable.gd" id="1_hqm8x"]
+[ext_resource type="Script" path="res://scripts/others/Other.gd" id="1_etck6"]
 [ext_resource type="Material" uid="uid://dbl24ok2a806b" path="res://assets/materials/mat_others.tres" id="1_mbasj"]
+[ext_resource type="Script" path="res://scripts/interaction/Interactable.gd" id="2_2woor"]
 [ext_resource type="ArrayMesh" uid="uid://d2gr8mb5cc76o" path="res://assets/models/city_others.obj" id="2_seq5w"]
+[ext_resource type="Shader" path="res://assets/shaders/sh_text.gdshader" id="5_nacp7"]
+[ext_resource type="Script" path="res://scripts/others/TextPlayer.gd" id="5_opadv"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mup3r"]
 radius = 0.4
 height = 1.8
 
-[node name="Other" type="Node3D"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_6jq2g"]
+viewport_path = NodePath("TalkingSubViewport")
 
-[node name="AnimatableBody3D" type="AnimatableBody3D" parent="."]
-script = ExtResource("1_hqm8x")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s3jve"]
+shader = ExtResource("5_nacp7")
+shader_parameter/time_speed = 10.0
+shader_parameter/vertex_offset_multiplier = 5.0
+shader_parameter/uv_offset_multiplier = 0.05
+
+[sub_resource type="SystemFont" id="SystemFont_57pty"]
+font_names = PackedStringArray("Impact")
+subpixel_positioning = 0
+
+[node name="Other" type="Node3D"]
+script = ExtResource("1_etck6")
+
+[node name="Interaction" type="AnimatableBody3D" parent="."]
+collision_layer = 5
+script = ExtResource("2_2woor")
 interaction_label = "Talk"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interaction"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 shape = SubResource("CapsuleShape3D_mup3r")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 material_override = ExtResource("1_mbasj")
 mesh = ExtResource("2_seq5w")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
+visible = false
+billboard = 1
+no_depth_test = true
+texture_filter = 0
+texture = SubResource("ViewportTexture_6jq2g")
+
+[node name="TextPlayer" type="Node" parent="." node_paths=PackedStringArray("label")]
+script = ExtResource("5_opadv")
+label = NodePath("../TalkingSubViewport/TalkingLabel")
+
+[node name="TalkingSubViewport" type="SubViewport" parent="."]
+disable_3d = true
+transparent_bg = true
+size = Vector2i(256, 64)
+
+[node name="TalkingLabel" type="Label" parent="TalkingSubViewport"]
+material = SubResource("ShaderMaterial_s3jve")
+custom_minimum_size = Vector2(256, 64)
+offset_right = 256.0
+offset_bottom = 64.0
+theme_override_fonts/font = SubResource("SystemFont_57pty")
+theme_override_font_sizes/font_size = 48
+text = "Text"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="interacted" from="Interaction" to="." method="_on_interaction_interacted"]
+[connection signal="finished" from="TextPlayer" to="." method="_on_text_player_finished"]

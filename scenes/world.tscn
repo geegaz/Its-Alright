@@ -1,18 +1,17 @@
-[gd_scene load_steps=29 format=3 uid="uid://c7uheoercchyr"]
+[gd_scene load_steps=28 format=3 uid="uid://c7uheoercchyr"]
 
 [ext_resource type="Script" path="res://scripts/World.gd" id="1_fumxa"]
 [ext_resource type="Material" uid="uid://cuqb1mo1wdr76" path="res://assets/materials/mat_city.tres" id="2_ddcng"]
 [ext_resource type="Environment" uid="uid://ck4rg3ux2si8r" path="res://assets/env_world.tres" id="2_vimpb"]
 [ext_resource type="Material" uid="uid://r2pbqi3pnyxx" path="res://assets/materials/mat_home.tres" id="3_oser2"]
 [ext_resource type="ArrayMesh" uid="uid://fkcspolj5mpp" path="res://assets/models/home.obj" id="3_qtjay"]
-[ext_resource type="Script" path="res://scripts/Interaction/Interactable.gd" id="4_8gqaf"]
 [ext_resource type="ArrayMesh" uid="uid://1rtqia3yr4hl" path="res://assets/models/home_door.obj" id="5_m2ufm"]
+[ext_resource type="Script" path="res://scripts/interaction/Interactable.gd" id="6_ajc2y"]
 [ext_resource type="ArrayMesh" uid="uid://d2dmrftyivxo8" path="res://assets/models/city.obj" id="6_jy8p7"]
 [ext_resource type="PackedScene" uid="uid://bi6ph1apeh7dm" path="res://scenes/objects/playing_cube.tscn" id="7_16k0x"]
 [ext_resource type="PackedScene" uid="uid://dfpw8hlldadnb" path="res://scenes/character.tscn" id="8_6380b"]
-[ext_resource type="PackedScene" uid="uid://ctvj5e350pjo0" path="res://scenes/objects/other.tscn" id="8_mrher"]
+[ext_resource type="PackedScene" uid="uid://t7hk4aq50xtw" path="res://scenes/objects/other.tscn" id="8_mrher"]
 [ext_resource type="Script" path="res://scripts/Spawner.gd" id="9_cy8dl"]
-[ext_resource type="Texture2D" uid="uid://dmutxl3jpfx8g" path="res://assets/textures/vt_dialog.tres" id="10_5i2uk"]
 [ext_resource type="Script" path="res://scripts/GameUI.gd" id="12_slngp"]
 [ext_resource type="PackedScene" uid="uid://d3dy0fyvq8m26" path="res://scenes/objects/getting_cube.tscn" id="13_opt4r"]
 [ext_resource type="Texture2D" uid="uid://dmr2ie66nwly4" path="res://assets/icons/mouse.svg" id="13_xnf1t"]
@@ -170,7 +169,7 @@ shape = SubResource("ConcavePolygonShape3D_43kok")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -3)
 collision_layer = 5
 collision_mask = 0
-script = ExtResource("4_8gqaf")
+script = ExtResource("6_ajc2y")
 interaction_label = "Open"
 active = false
 metadata/_edit_group_ = true
@@ -203,6 +202,8 @@ shape = SubResource("ConcavePolygonShape3D_4w1dm")
 
 [node name="Other" parent="." instance=ExtResource("8_mrher")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -8)
+talking_text = Array[String](["Yes?", "What is it?", "Oh, you're looking for a cube. 
+I saw one further down this road.", "Good luck!"])
 
 [node name="Other2" parent="." instance=ExtResource("8_mrher")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -13)
@@ -235,12 +236,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 2)
 
 [node name="RayCast3D" parent="Character/CameraPivot/Camera3D" index="0" node_paths=PackedStringArray("game_ui")]
 game_ui = NodePath("../../../../UILayer/GameUI")
-
-[node name="DialogText" type="Sprite3D" parent="."]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -3, 1.6, -8)
-billboard = 1
-no_depth_test = true
-texture = ExtResource("10_5i2uk")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -302,12 +297,13 @@ horizontal_alignment = 1
 [node name="DialogSubViewport" type="SubViewport" parent="."]
 disable_3d = true
 transparent_bg = true
+size = Vector2i(256, 64)
 
 [node name="DialogLabel" type="Label" parent="DialogSubViewport"]
 material = SubResource("ShaderMaterial_vj803")
-custom_minimum_size = Vector2(512, 512)
-offset_right = 512.0
-offset_bottom = 512.0
+custom_minimum_size = Vector2(256, 64)
+offset_right = 256.0
+offset_bottom = 64.0
 theme_override_fonts/font = SubResource("SystemFont_gh12h")
 theme_override_font_sizes/font_size = 48
 text = "Dialog"

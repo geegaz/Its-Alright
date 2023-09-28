@@ -5,7 +5,7 @@
 [ext_resource type="Material" uid="uid://cuqb1mo1wdr76" path="res://assets/materials/mat_city.tres" id="3_dv7rt"]
 [ext_resource type="Material" uid="uid://dbl24ok2a806b" path="res://assets/materials/mat_others.tres" id="4_4clhp"]
 [ext_resource type="Script" path="res://scripts/CharacterCamera.gd" id="4_afb5y"]
-[ext_resource type="Script" path="res://scripts/Interaction/Interactor.gd" id="5_h5gw0"]
+[ext_resource type="Script" path="res://scripts/interaction/Interactor.gd" id="5_h5gw0"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_v1xd5"]
 radius = 0.4

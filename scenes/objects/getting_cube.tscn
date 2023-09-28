@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://d3dy0fyvq8m26"]
 
-[ext_resource type="Script" path="res://scripts/Interaction/GettingCube.gd" id="1_0364c"]
+[ext_resource type="Script" path="res://scripts/interaction/GettingCube.gd" id="1_f8wsx"]
 [ext_resource type="ArrayMesh" uid="uid://clgao0n5yhiwr" path="res://assets/models/home_cube.obj" id="2_68q2k"]
 [ext_resource type="Material" uid="uid://rghu83iy6ixp" path="res://assets/materials/mat_cube.tres" id="2_q2i8i"]
 
@@ -10,7 +10,7 @@ points = PackedVector3Array(0.375, 0.5, 0.375, 0.375, 0.5, -0.375, -0.375, 0.5, 
 [node name="GettingCube" type="StaticBody3D" node_paths=PackedStringArray("cube_mesh") groups=["GettingCubes"]]
 collision_layer = 4
 collision_mask = 0
-script = ExtResource("1_0364c")
+script = ExtResource("1_f8wsx")
 cube_mesh = NodePath("MeshInstance3D")
 interaction_label = "Get"
 
