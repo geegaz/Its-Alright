@@ -65,6 +65,8 @@ ui_screenshot={
 
 [layer_names]
 
+3d_render/layer_1="Static"
+3d_render/layer_2="Dynamic"
 3d_physics/layer_1="World"
 3d_physics/layer_2="Player"
 3d_physics/layer_3="Interactible"
@@ -72,3 +74,4 @@ ui_screenshot={
 [rendering]
 
 anti_aliasing/quality/msaa_3d=1
+occlusion_culling/use_occlusion_culling=true

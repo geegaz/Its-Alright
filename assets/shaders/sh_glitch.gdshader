@@ -28,7 +28,7 @@ void vertex() {
 	chaos = dist_amount * chaos_amount;
 	floored_time = floor(TIME * time_speed);
 	
-	float vertex_floored_time = floor(time_speed * (TIME + world_pos.x + world_pos.y + world_pos.z));
+	float vertex_floored_time = floor(time_speed * (TIME + UV.x + UV.y));
 	
 	vec3 random_pos = vec3(
 		random(UV.x + vertex_floored_time),

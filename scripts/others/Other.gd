@@ -1,7 +1,16 @@
-extends Node3D
+extends PathFollow3D
 
-@export_enum("Sequence", "Sequence Looped", "Random") var talking_order: int = 0
+@export_subgroup("Talking")
+@export_enum("Sequence", "Sequence Looped", "Random") var talking_behavior: int = 0
 @export_multiline var talking_text: Array[String] = []
+
+@export_subgroup("Walking")
+@export_enum("Stop on Talk", "Walk on Talk") var walking_behavior: int = 0
+@export var walking_speed: = 2.0 #m/s
+@export var walking_stops: Array[float]
+
+var walking: = false
+var current_stop: int = -1
 
 var current_text: int = -1
 var text_indexes: Array
@@ -9,15 +18,29 @@ var text_indexes: Array
 @onready var text_player: = $TextPlayer
 @onready var text_sprite: = $Sprite3D
 @onready var interaction: = $Interaction
+@onready var audio_player: = $AudioStreamPlayer3D
 
 func _ready() -> void:
 	text_player.stop()
 	text_indexes = range(talking_text.size())
 	
 	interaction.active = talking_text.size() > 0
+	if walking_behavior == 0:
+		walking = true
+
+func _process(delta: float) -> void:
+	if walking:
+		progress += walking_speed * delta
+	
+	if walking_behavior == 1 and walking_stops.size() > 0:
+		var walking_stop: float = walking_stops[current_stop]
+		if progress >= walking_stop:
+			progress = walking_stop
+			walking = false
 
 func _on_interaction_interacted() -> void:
-	match talking_order:
+	# Talking
+	match talking_behavior:
 		0:
 			current_text = min(current_text + 1, talking_text.size() - 1)
 		1:
@@ -29,7 +52,28 @@ func _on_interaction_interacted() -> void:
 	
 	text_player.play(talking_text[current_text])
 	text_sprite.show()
+	interaction.active = false
+	
+	# Walking
+	if walking_behavior == 0:
+		walking = false
+	else:
+		if talking_behavior == 0:
+			current_stop = min(current_stop + 1, walking_stops.size() - 1)
+		elif talking_behavior == 1:
+			current_stop = (current_stop + 1) % walking_stops.size()
+		walking = true
 
 
 func _on_text_player_finished() -> void:
+	# Talking
 	text_sprite.hide()
+	interaction.active = true
+	
+	# Walking
+	if walking_behavior == 0:
+		walking = true
+
+
+func _on_text_player_changed_part() -> void:
+	pass # Replace with function body.

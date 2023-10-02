@@ -15,6 +15,7 @@ cube_mesh = NodePath("MeshInstance3D")
 interaction_label = "Get"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+layers = 2
 material_override = ExtResource("2_q2i8i")
 mesh = ExtResource("2_68q2k")
 skeleton = NodePath("../..")

@@ -18,7 +18,7 @@ func update_targeted_interactable(target: Object)->void:
 			game_ui.hide_prompt()
 		targeted_interactable = null
 
-func _physics_process(delta: float) -> void:
+func _process(delta: float) -> void:
 	var new_target = get_collider()
 	if new_target != targeted_interactable:
 		update_targeted_interactable(new_target)

@@ -24,11 +24,12 @@ shader_parameter/uv_offset_multiplier = 0.05
 font_names = PackedStringArray("Impact")
 subpixel_positioning = 0
 
-[node name="Other" type="Node3D"]
+[node name="Other" type="PathFollow3D"]
 script = ExtResource("1_etck6")
 
 [node name="Interaction" type="AnimatableBody3D" parent="."]
 collision_layer = 5
+sync_to_physics = false
 script = ExtResource("2_2woor")
 interaction_label = "Talk"
 
@@ -37,6 +38,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 shape = SubResource("CapsuleShape3D_mup3r")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+layers = 2
 material_override = ExtResource("1_mbasj")
 mesh = ExtResource("2_seq5w")
 
@@ -72,4 +74,5 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [connection signal="interacted" from="Interaction" to="." method="_on_interaction_interacted"]
+[connection signal="changed_part" from="TextPlayer" to="." method="_on_text_player_changed_part"]
 [connection signal="finished" from="TextPlayer" to="." method="_on_text_player_finished"]
