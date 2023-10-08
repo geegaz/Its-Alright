@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://c7uheoercchyr"]
+[gd_scene load_steps=29 format=3 uid="uid://c7uheoercchyr"]
 
 [ext_resource type="Script" path="res://scripts/World.gd" id="1_fumxa"]
 [ext_resource type="Material" uid="uid://cuqb1mo1wdr76" path="res://assets/materials/mat_city.tres" id="2_ddcng"]
@@ -56,7 +56,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, 2, -3.05), Vector3(2.1, 2, -3.05)]
+"values": [Vector3(0, 2, -2.9), Vector3(2.1, 2, -2.9)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -84,7 +84,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, 2, -3), Vector3(0, 2, -3.05)]
+"values": [Vector3(0, 2, -3), Vector3(0, 2, -2.9)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -99,9 +99,52 @@ tracks/1/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_1wukq"]
+resource_name = "close_door"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Home/HomeDoor:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.2, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(2.1, 2, -2.9), Vector3(0, 2, -2.9), Vector3(0, 2, -2.9), Vector3(0, 2, -3)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Home/HomeDoor:active")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"show_end"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_im5et"]
 _data = {
 "RESET": SubResource("Animation_4bojq"),
+"close_door": SubResource("Animation_1wukq"),
 "open_door": SubResource("Animation_g7f6e"),
 "show_door": SubResource("Animation_g71gn")
 }
@@ -141,6 +184,7 @@ point_count = 2
 script = ExtResource("1_fumxa")
 
 [node name="UILayer" type="CanvasLayer" parent="."]
+process_mode = 3
 
 [node name="GameUI" type="Control" parent="UILayer"]
 layout_mode = 3
@@ -151,6 +195,17 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("12_slngp")
+
+[node name="Transition" type="ColorRect" parent="UILayer/GameUI"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+color = Color(0, 0, 0, 1)
 
 [node name="ActionPrompt" type="HBoxContainer" parent="UILayer/GameUI"]
 visible = false
