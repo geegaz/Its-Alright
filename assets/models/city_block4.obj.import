@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bhl2j6v0sp54j"
+path="res://.godot/imported/city_block4.obj-f9cfdf4ef068a6977bde359f9d517f82.mesh"
+
+[deps]
+
+files=["res://.godot/imported/city_block4.obj-f9cfdf4ef068a6977bde359f9d517f82.mesh"]
+
+source_file="res://assets/models/city_block4.obj"
+dest_files=["res://.godot/imported/city_block4.obj-f9cfdf4ef068a6977bde359f9d517f82.mesh", "res://.godot/imported/city_block4.obj-f9cfdf4ef068a6977bde359f9d517f82.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

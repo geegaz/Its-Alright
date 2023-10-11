@@ -2,7 +2,7 @@ extends Node3D
 
 @onready var game_ui: = $UILayer/GameUI
 @onready var animation_player: = $AnimationPlayer
-@onready var spawner: = $PlayingCubeSpawner
+@onready var spawner: = $Home/PlayingCubeSpawner
 
 @onready var home_door: = $Home/HomeDoor
 

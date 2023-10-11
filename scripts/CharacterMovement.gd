@@ -3,7 +3,7 @@ extends CharacterBody3D
 @export var camera: Camera3D
 @export var camera_pivot: Node3D
 @export var speed: = 5.0
-@export var jump_height: = 1.5
+@export var jump_height: = 1.0
 @export var jump_duration: = 0.5
 @export var enable_push_rigidbodies: bool = true
 

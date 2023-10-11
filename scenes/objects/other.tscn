@@ -73,6 +73,5 @@ text = "Text"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="interacted" from="Interaction" to="." method="_on_interaction_interacted"]
 [connection signal="changed_part" from="TextPlayer" to="." method="_on_text_player_changed_part"]
 [connection signal="finished" from="TextPlayer" to="." method="_on_text_player_finished"]
