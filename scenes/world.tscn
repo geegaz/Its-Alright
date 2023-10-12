@@ -219,6 +219,8 @@ script = ExtResource("1_fumxa")
 
 [node name="DebugTools" type="Node" parent="." node_paths=PackedStringArray("world_env")]
 script = ExtResource("24_b0bnh")
+enable_chaos = false
+enable_environment = false
 materials = Array[ShaderMaterial]([ExtResource("2_ddcng")])
 environment = ExtResource("2_vimpb")
 world_env = NodePath("../WorldEnvironment")
@@ -293,7 +295,6 @@ libraries = {
 }
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("2_vimpb")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.707107, 0.707107, 0, -0.707107, -0.707107, 0, 10, 0)
@@ -501,8 +502,13 @@ spawn_randomness = 0.5
 curve = SubResource("Curve3D_tstke")
 
 [node name="Friend" parent="Characters/FriendPath" instance=ExtResource("26_5lamq")]
-transform = Transform3D(-1, 0, -0.000454577, 0, 1, 0, 0.000454577, 0, -1, 14.2687, 0.010498, -28.3985)
+transform = Transform3D(-0.999991, 0, -0.000454573, 0, 0.999997, 0, 0.000454573, 0, -0.999991, 14.2687, 0.010498, -28.3985)
+rotation_mode = 1
+loop = false
+talking_text = Array[String](["Hey! So glad to see you!", "Been a while since I saw you, you doing ok?", "I know you don't go out much, so I wanted to show you this...", "Follow me!", "Watch your steps.", "We're close. Come on!", "Look at that view. Everything seems more peaceful up there, doesn't it?"])
 walking_behavior = 1
+walking_speed = 5.0
+walking_stops = Array[float]([0.0, 0.0, 0.0, 11.0, 30.0, 55.0, 55.0])
 
 [node name="Cubes" type="Node3D" parent="."]
 

@@ -23,3 +23,5 @@ texture = SubResource("ViewportTexture_dmn4s")
 
 [node name="TalkingLabel" parent="TalkingSubViewport" index="0"]
 material = SubResource("ShaderMaterial_p385c")
+
+[connection signal="interacted" from="Interaction" to="." method="_on_interaction_interacted"]
