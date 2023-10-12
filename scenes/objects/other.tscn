@@ -1,11 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://t7hk4aq50xtw"]
+[gd_scene load_steps=10 format=3 uid="uid://t7hk4aq50xtw"]
 
 [ext_resource type="Script" path="res://scripts/others/Other.gd" id="1_etck6"]
 [ext_resource type="Material" uid="uid://dbl24ok2a806b" path="res://assets/materials/mat_others.tres" id="1_mbasj"]
 [ext_resource type="Script" path="res://scripts/interaction/Interactable.gd" id="2_2woor"]
 [ext_resource type="ArrayMesh" uid="uid://d2gr8mb5cc76o" path="res://assets/models/city_others.obj" id="2_seq5w"]
-[ext_resource type="Shader" path="res://assets/shaders/sh_text.gdshader" id="5_nacp7"]
 [ext_resource type="Script" path="res://scripts/others/TextPlayer.gd" id="5_opadv"]
+[ext_resource type="Material" uid="uid://dvnau2mky1cml" path="res://assets/materials/mat_other_text.tres" id="6_khubh"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mup3r"]
 radius = 0.4
@@ -13,12 +13,6 @@ height = 1.8
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_6jq2g"]
 viewport_path = NodePath("TalkingSubViewport")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_s3jve"]
-shader = ExtResource("5_nacp7")
-shader_parameter/time_speed = 10.0
-shader_parameter/vertex_offset_multiplier = 5.0
-shader_parameter/uv_offset_multiplier = 0.05
 
 [sub_resource type="SystemFont" id="SystemFont_57pty"]
 font_names = PackedStringArray("Impact")
@@ -63,7 +57,7 @@ transparent_bg = true
 size = Vector2i(256, 64)
 
 [node name="TalkingLabel" type="Label" parent="TalkingSubViewport"]
-material = SubResource("ShaderMaterial_s3jve")
+material = ExtResource("6_khubh")
 custom_minimum_size = Vector2(256, 64)
 offset_right = 256.0
 offset_bottom = 64.0

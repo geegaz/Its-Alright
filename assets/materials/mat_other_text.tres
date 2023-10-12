@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dvnau2mky1cml"]
+
+[ext_resource type="Shader" path="res://assets/shaders/sh_text.gdshader" id="1_jt4tg"]
+
+[resource]
+shader = ExtResource("1_jt4tg")
+shader_parameter/time_speed = 10.0
+shader_parameter/vertex_offset_multiplier = 5.0
+shader_parameter/uv_offset_multiplier = 0.05

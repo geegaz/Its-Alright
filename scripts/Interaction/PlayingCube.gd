@@ -28,6 +28,7 @@ func consume_cube()->void:
 		tween.set_parallel()
 		tween.tween_property(cube_material, "albedo_color", target_material.albedo_color, 3.0)
 		tween.tween_property(cube_material, "roughness", target_material.roughness, 3.0)
+		tween.tween_property(cube_material, "rim", 0.0, 3.0)
 	else:
 		tween.tween_interval(3.0)
 	tween.set_parallel(false)

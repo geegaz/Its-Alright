@@ -2,7 +2,7 @@ shader_type canvas_item;
 
 uniform float time_speed = 10.0;
 uniform float vertex_offset_multiplier : hint_range(0.0, 10.0, 0.1) = 5.0;
-uniform float uv_offset_multiplier : hint_range(0.0, 1.0, 0.1) = 0.05;
+uniform float uv_offset_multiplier : hint_range(0.0, 1.0, 0.01) = 0.05;
 
 varying float floored_time;
 

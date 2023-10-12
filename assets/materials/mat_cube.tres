@@ -4,3 +4,4 @@
 resource_local_to_scene = true
 albedo_color = Color(0, 0.498039, 1, 1)
 roughness = 0.25
+rim_enabled = true
