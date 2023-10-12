@@ -5,7 +5,7 @@ extends PathFollow3D
 @export_multiline var talking_text: Array[String] = []
 
 @export_subgroup("Walking")
-@export_enum("Stop on Talk", "Walk on Talk") var walking_behavior: int = 0
+@export_enum("Ignore", "Walk on Talk", "Stop on Talk") var walking_behavior: int = 0
 @export var walking_speed: = 2.0 #m/s
 @export var walking_stops: Array[float]
 
@@ -25,7 +25,7 @@ func _ready() -> void:
 	text_indexes = range(talking_text.size())
 	
 	interaction.active = talking_text.size() > 0
-	if walking_behavior == 0:
+	if walking_behavior == 0 or walking_behavior == 2:
 		walking = true
 
 func _process(delta: float) -> void:
@@ -55,7 +55,7 @@ func _on_interaction_interacted() -> void:
 	interaction.active = false
 	
 	# Walking
-	if walking_behavior == 0:
+	if walking_behavior == 2:
 		walking = false
 	else:
 		if talking_behavior == 0:

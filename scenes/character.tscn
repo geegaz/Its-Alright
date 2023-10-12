@@ -41,6 +41,6 @@ pivot = NodePath("..")
 
 [node name="RayCast3D" type="RayCast3D" parent="CameraPivot/Camera3D"]
 target_position = Vector3(0, 0, -3)
-collision_mask = 4
+collision_mask = 5
 script = ExtResource("5_h5gw0")
 interact_action = "action_interact"
