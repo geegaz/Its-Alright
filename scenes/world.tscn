@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://c7uheoercchyr"]
+[gd_scene load_steps=58 format=3 uid="uid://c7uheoercchyr"]
 
 [ext_resource type="Script" path="res://scripts/World.gd" id="1_fumxa"]
 [ext_resource type="Material" uid="uid://cuqb1mo1wdr76" path="res://assets/materials/mat_city.tres" id="2_ddcng"]
@@ -215,6 +215,20 @@ _data = {
 }
 point_count = 18
 
+[sub_resource type="Curve3D" id="Curve3D_8plfn"]
+_data = {
+"points": PackedVector3Array(-0.776867, 0, -1.37831, 0.776867, 0, 1.37831, 19.3684, 0, -24.0612, -0.726748, 0, 1.30313, 0.726748, 0, -1.30313, 23.1118, 0, -24.1085, -0.576385, 0, -1.27807, 0.576385, 0, 1.27807, 19.3779, 0, -24.0584),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="Curve3D" id="Curve3D_a6ukx"]
+_data = {
+"points": PackedVector3Array(-0.935266, 0, 0, 0.935266, 0, 0, 22.8046, 0, -32.0096, -1.51081, 0, 0, 1.51081, 0, 0, 21.8453, 0, -26.0862, -1.67868, 0, 0.0719433, 1.67868, 0, -0.0719433, 21.1978, 0, -29.4196, 2.13432, 0, -0.0479622, -2.13432, 0, 0.0479622, 19.6631, 0, -27.4531, 2.44608, 0, 0.551567, -2.44608, 0, -0.551567, 18.488, 0, -29.1078, -0.575548, 0, 0.935265, 0.575548, 0, -0.935265, 20.5504, 0, -30.5467, 0.863319, 0, -1.89451, -0.863319, 0, 1.89451, 18.8717, 0, -32.0096, -1.17508, 0, 0.0959244, 1.17508, 0, -0.0959244, 22.8013, 0, -32.0073),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
+
 [sub_resource type="Curve3D" id="Curve3D_clv87"]
 _data = {
 "points": PackedVector3Array(0, 0, 0, 0, 0, 0, -22.4918, 0, -10.0794, 0.0871849, 0, 1.9471, -0.0871849, 0, -1.9471, -24.6133, 0, -11.4453, -0.955975, 0, 2.4751, 0.955975, 0, -2.4751, -23.3176, 0, -25.9025, -2.42099, 0, 0.763142, 2.42099, 0, -0.763142, -16.2121, 0, -33.0349, -1.01699, 0, -0.708488, 1.01699, 0, 0.708488, -4.94888, 0, -33.1126, 0, 0, 0, 0, 0, 0, -4.51504, 0, -31.2511),
@@ -235,6 +249,13 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
 }
 point_count = 6
+
+[sub_resource type="Curve3D" id="Curve3D_fyjko"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.0519786, 0, -36.6584, 0, 0, 0, 0, 0, 0, -2.72511, 0, -36.6336, 0, 0, 0, 0, 0, 0, 0.0706614, 0, -36.6613),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
 
 [sub_resource type="Curve3D" id="Curve3D_rf8fy"]
 _data = {
@@ -534,95 +555,190 @@ spawn_randomness = 0.5
 
 [node name="Characters" type="Node3D" parent="."]
 
+[node name="Friend" type="Node3D" parent="Characters"]
+
+[node name="Other" parent="Characters/Friend" instance=ExtResource("27_jha75")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1193, 0, -22.7326)
+talking_behavior = 1
+talking_text = Array[String](["I'm supposed to warn you about the mess back there.", "Yeah, don't go there alone.", "Bring a friend I guess...?"])
+
+[node name="Other2" parent="Characters/Friend" instance=ExtResource("27_jha75")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.3835, 0, -30.4096)
+talking_behavior = 2
+talking_text = Array[String](["Hm?", "What do you want?"])
+
 [node name="FriendPath" type="Path3D" parent="Characters"]
 curve = SubResource("Curve3D_tstke")
 
 [node name="Friend" parent="Characters/FriendPath" instance=ExtResource("26_5lamq")]
 transform = Transform3D(-0.999991, 0, -0.000454573, 0, 0.999997, 0, 0.000454573, 0, -0.999991, 14.2687, 0.010498, -28.3985)
-rotation_mode = 1
 loop = false
 talking_text = Array[String](["Hey! So glad to see you!", "Been a while, you doing ok?", "I know you don't go out much, so I wanted to show you this...", "Follow me!", "Watch your steps.", "We're close. Come on!", "Look at that view. Everything seems more peaceful up there, doesn't it?"])
 walking_behavior = 1
 walking_speed = 5.0
 walking_stops = Array[float]([0.0, 0.0, 0.0, 11.0, 30.0, 55.0, 55.0])
 
+[node name="FriendPath2" type="Path3D" parent="Characters"]
+curve = SubResource("Curve3D_8plfn")
+
+[node name="Other3" parent="Characters/FriendPath2" instance=ExtResource("27_jha75")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.3684, 0, -24.0612)
+rotation_mode = 0
+talking_text = Array[String](["Hey move out the way!", "Ah damn I missed the ball.", "There, you messed up our game, you happy?"])
+walking_behavior = 2
+walking_speed = 5.0
+
+[node name="FriendPath3" type="Path3D" parent="Characters"]
+curve = SubResource("Curve3D_a6ukx")
+
+[node name="Other" parent="Characters/FriendPath3" instance=ExtResource("27_jha75")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 22.8046, 0, -32.0096)
+talking_behavior = 2
+talking_text = Array[String](["I got it!", "Pass the ball!"])
+walking_speed = 10.0
+
+[node name="Other2" parent="Characters/FriendPath3" instance=ExtResource("27_jha75")]
+transform = Transform3D(-0.973414, 0, 0.229049, 0, 1, 0, -0.229049, 0, -0.973414, 21.552, 0, -27.3198)
+progress = 5.0
+talking_behavior = 2
+talking_text = Array[String](["I got it!", "Pass the ball!"])
+walking_speed = 10.0
+
+[node name="Other3" parent="Characters/FriendPath3" instance=ExtResource("27_jha75")]
+transform = Transform3D(-0.485952, 0, -0.873983, 0, 1, 0, 0.873983, 0, -0.485952, 21.7773, 0, -29.3212)
+progress = 11.3
+talking_behavior = 2
+talking_text = Array[String](["I got it!", "Pass the ball!"])
+walking_speed = 10.0
+
+[node name="Other4" parent="Characters/FriendPath3" instance=ExtResource("27_jha75")]
+transform = Transform3D(0.309862, 0, -0.950779, 0, 1, 0, 0.950779, 0, 0.309862, 17.9354, 0, -29.5666)
+progress = 18.95
+talking_behavior = 2
+talking_text = Array[String](["I got it!", "Pass the ball!"])
+walking_speed = 10.0
+
+[node name="Other5" parent="Characters/FriendPath3" instance=ExtResource("27_jha75")]
+transform = Transform3D(0.987198, 0, 0.159481, 0, 1, 0, -0.159481, 0, 0.987198, 20.6622, 0, -31.3799)
+progress = 22.65
+talking_behavior = 2
+talking_text = Array[String](["I got it!", "Pass the ball!"])
+walking_speed = 10.0
+
+[node name="Busy" type="Node3D" parent="Characters"]
+
+[node name="Other3" parent="Characters/Busy" instance=ExtResource("27_jha75")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.0681, 0, -2.33162)
+talking_behavior = 1
+talking_text = Array[String](["Be careful if you want to go further.", "It's rush hour."])
+
+[node name="Other4" parent="Characters/Busy" instance=ExtResource("27_jha75")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.6945, 0, -3.02875)
+talking_behavior = 1
+talking_text = Array[String](["These guys seem pretty serious about their job!", "They won't stop for you.", "Why don't you go around?"])
+
+[node name="Other5" parent="Characters/Busy" instance=ExtResource("27_jha75")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.6731, 0, -13.3433)
+talking_behavior = 1
+talking_text = Array[String](["A cube?", "What cube?", "We're on break, fuck off."])
+
+[node name="Other6" parent="Characters/Busy" instance=ExtResource("27_jha75")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.9098, 0, -14.5442)
+talking_behavior = 1
+talking_text = Array[String](["Ah um, sorry about her.", "This is just uh, the place we go to between work hours.", "Sorry, there's no cube here."])
+
+[node name="Other7" parent="Characters/Busy" instance=ExtResource("27_jha75")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.1301, 0, -21.2382)
+talking_behavior = 2
+talking_text = Array[String](["They're running pretty fast...", "Where are they running to?", "What are they running from?", "Good luck if you're going back in."])
+
+[node name="Other" parent="Characters/Busy" instance=ExtResource("27_jha75")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.66628, 0, -30.7478)
+talking_behavior = 1
+talking_text = Array[String](["There's the busy street on the left.", "Would not recommend.", "There's also the big plaza on the right.", "I saw your friend there, said hello to him yet? ", "Yeah I know the plaza has a real name but everyone calls it Big Plaza."])
+
+[node name="Other2" parent="Characters/Busy" instance=ExtResource("27_jha75")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.6171, 0, -5.72326)
+talking_behavior = 1
+talking_text = Array[String](["I think I saw a cube in the alley right there!", "You're looking for one right?", "But it's behind a fence...", "I really don't want to cross the the busy street to reach it..."])
+
 [node name="BusyPath" type="Path3D" parent="Characters"]
 curve = SubResource("Curve3D_clv87")
 
 [node name="Other" parent="Characters/BusyPath" instance=ExtResource("27_jha75")]
-transform = Transform3D(0.998641, 0, -0.0521085, 0, 1, 0, 0.0521085, 0, 0.998641, -24.4905, 0, -16.2837)
+transform = Transform3D(0.998641, 0, -0.0521139, 0, 1, 0, 0.0521139, 0, 0.998641, -24.4905, 0, -16.2837)
 progress = 7.83117
 talking_behavior = 2
 walking_speed = 10.0
 
 [node name="Other2" parent="Characters/BusyPath" instance=ExtResource("27_jha75")]
-transform = Transform3D(0.998013, 0, -0.0629314, 0, 1, 0, 0.0629314, 0, 0.998013, -24.413, 0, -17.6304)
+transform = Transform3D(0.998012, 0, -0.0629369, 0, 1, 0, 0.0629369, 0, 0.998012, -24.413, 0, -17.6304)
 progress = 9.18
 talking_behavior = 2
 walking_speed = 10.0
 
 [node name="Other3" parent="Characters/BusyPath" instance=ExtResource("27_jha75")]
-transform = Transform3D(0.994428, 0, -0.105372, 0, 1, 0, 0.105372, 0, 0.994428, -24.0894, 0, -21.5669)
+transform = Transform3D(0.994427, 0, -0.105377, 0, 1, 0, 0.105377, 0, 0.994427, -24.0894, 0, -21.5669)
 progress = 13.13
 talking_behavior = 2
 walking_speed = 10.0
 
 [node name="Other4" parent="Characters/BusyPath" instance=ExtResource("27_jha75")]
-transform = Transform3D(0.938752, 0, -0.344578, 0, 1, 0, 0.344578, 0, 0.938752, -23.3394, 0, -25.8445)
+transform = Transform3D(0.938751, 0, -0.34458, 0, 1, 0, 0.34458, 0, 0.938751, -23.3394, 0, -25.8445)
 progress = 17.48
 talking_behavior = 2
 walking_speed = 10.0
 
 [node name="Other5" parent="Characters/BusyPath" instance=ExtResource("27_jha75")]
-transform = Transform3D(0.644453, 0, -0.764636, 0, 1, 0, 0.764636, 0, 0.644453, -19.0424, 0, -31.2926)
+transform = Transform3D(0.644459, 0, -0.764631, 0, 1, 0, 0.764631, 0, 0.644459, -19.0424, 0, -31.2926)
 progress = 24.48
 talking_behavior = 2
 walking_speed = 10.0
 
 [node name="Other6" parent="Characters/BusyPath" instance=ExtResource("27_jha75")]
-transform = Transform3D(0.455478, 0, -0.89024, 0, 1, 0, 0.89024, 0, 0.455478, -16.9883, 0, -32.709)
+transform = Transform3D(0.455477, 0, -0.890241, 0, 1, 0, 0.890241, 0, 0.455477, -16.9883, 0, -32.709)
 progress = 26.98
 talking_behavior = 2
 walking_speed = 10.0
 
 [node name="Other7" parent="Characters/BusyPath" instance=ExtResource("27_jha75")]
-transform = Transform3D(0.269103, 0, -0.963104, 0, 1, 0, 0.963104, 0, 0.269103, -16.0624, 0, -33.0792)
+transform = Transform3D(0.269096, 0, -0.963106, 0, 1, 0, 0.963106, 0, 0.269096, -16.0624, 0, -33.0793)
 progress = 27.98
 talking_behavior = 2
 walking_speed = 10.0
 
 [node name="Other8" parent="Characters/BusyPath" instance=ExtResource("27_jha75")]
-transform = Transform3D(0.0922926, 0, -0.995725, 0, 1, 0, 0.995725, 0, 0.0922926, -13.6448, 0, -33.4621)
+transform = Transform3D(0.0922906, 0, -0.995725, 0, 1, 0, 0.995725, 0, 0.0922906, -13.6448, 0, -33.4621)
 progress = 30.43
 talking_behavior = 2
 walking_speed = 10.0
 
 [node name="Other9" parent="Characters/BusyPath" instance=ExtResource("27_jha75")]
-transform = Transform3D(-0.0640683, 0, -0.997938, 0, 1, 0, 0.997938, 0, -0.0640683, -7.45036, 0, -33.5576)
+transform = Transform3D(-0.0640689, 0, -0.997938, 0, 1, 0, 0.997938, 0, -0.0640689, -7.45036, 0, -33.5576)
 progress = 36.63
 talking_behavior = 2
 walking_speed = 10.0
 
 [node name="Other10" parent="Characters/BusyPath" instance=ExtResource("27_jha75")]
-transform = Transform3D(-0.829242, 0, -0.558877, 0, 1, 0, 0.558877, 0, -0.829242, -4.56843, 0, -32.7343)
+transform = Transform3D(-0.829239, 0, -0.558882, 0, 1, 0, 0.558882, 0, -0.829239, -4.56843, 0, -32.7343)
 progress = 39.73
 talking_behavior = 2
 walking_speed = 10.0
 
 [node name="Other11" parent="Characters/BusyPath" instance=ExtResource("27_jha75")]
-transform = Transform3D(0.999032, 0, -0.0437733, 0, 1, 0, 0.0437733, 0, 0.999032, -24.5399, 0, -15.2555)
+transform = Transform3D(0.999032, 0, -0.0437785, 0, 1, 0, 0.0437785, 0, 0.999032, -24.5399, 0, -15.2555)
 progress = 6.8018
 talking_behavior = 2
 walking_speed = 10.0
 
 [node name="Other12" parent="Characters/BusyPath" instance=ExtResource("27_jha75")]
-transform = Transform3D(0.99988, 0, -0.0147796, 0, 1, 0, 0.0147796, 0, 0.99988, -24.6195, 0, -12.7051)
+transform = Transform3D(0.99988, 0, -0.0147832, 0, 1, 0, 0.0147832, 0, 0.99988, -24.6195, 0, -12.7051)
 progress = 4.25
 talking_behavior = 2
 walking_speed = 10.0
 
 [node name="Other13" parent="Characters/BusyPath" instance=ExtResource("27_jha75")]
-transform = Transform3D(-0.0787404, 0, 0.996884, 0, 1, 0, -0.996884, 0, -0.0787404, -22.9338, 0, -10.0063)
+transform = Transform3D(-0.0787298, 0, 0.996885, 0, 1, 0, -0.996885, 0, -0.0787298, -22.9338, 0, -10.0063)
 progress = 0.45
 talking_behavior = 2
 walking_speed = 10.0
@@ -631,102 +747,102 @@ walking_speed = 10.0
 curve = SubResource("Curve3D_nmbnf")
 
 [node name="Other" parent="Characters/BusyPath2" instance=ExtResource("27_jha75")]
-transform = Transform3D(-0.0565131, 0, -0.998402, 0, 1, 0, 0.998402, 0, -0.0565131, -28.7726, 0, -8.29333)
+transform = Transform3D(-0.0565161, 0, -0.998402, 0, 1, 0, 0.998402, 0, -0.0565161, -28.7726, 0, -8.29333)
 talking_behavior = 2
 walking_speed = 10.0
 
 [node name="Other2" parent="Characters/BusyPath2" instance=ExtResource("27_jha75")]
-transform = Transform3D(0.995203, 0, -0.0978231, 0, 1, 0, 0.0978231, 0, 0.995203, -26.792, 0, -9.01378)
+transform = Transform3D(0.995203, 0, -0.0978205, 0, 1, 0, 0.0978205, 0, 0.995203, -26.792, 0, -9.01379)
 progress = 3.05
 talking_behavior = 2
 walking_speed = 10.0
 
 [node name="Other3" parent="Characters/BusyPath2" instance=ExtResource("27_jha75")]
-transform = Transform3D(0.99944, 0, -0.0334448, 0, 1, 0, 0.0334448, 0, 0.99944, -26.7146, 0, -10.3558)
+transform = Transform3D(0.99944, 0, -0.0334434, 0, 1, 0, 0.0334434, 0, 0.99944, -26.7146, 0, -10.3559)
 progress = 4.4
 talking_behavior = 2
 walking_speed = 10.0
 
 [node name="Other4" parent="Characters/BusyPath2" instance=ExtResource("27_jha75")]
-transform = Transform3D(0.999961, 0, -0.008747, 0, 1, 0, 0.008747, 0, 0.999961, -26.6798, 0, -12.2056)
+transform = Transform3D(0.999961, 0, -0.00874576, 0, 1, 0, 0.00874576, 0, 0.999961, -26.6798, 0, -12.2057)
 progress = 6.25
 talking_behavior = 2
 walking_speed = 10.0
 
 [node name="Other5" parent="Characters/BusyPath2" instance=ExtResource("27_jha75")]
-transform = Transform3D(0.999997, 0, 0.00182952, 0, 1, 0, -0.00182952, 0, 0.999997, -26.6772, 0, -16.6559)
+transform = Transform3D(0.999997, 0, 0.00183067, 0, 1, 0, -0.00183067, 0, 0.999997, -26.6772, 0, -16.6559)
 progress = 10.7
 talking_behavior = 2
 walking_speed = 10.0
 
 [node name="Other6" parent="Characters/BusyPath2" instance=ExtResource("27_jha75")]
-transform = Transform3D(0.999956, 0, -0.00920285, 0, 1, 0, 0.00920285, 0, 0.999956, -26.6683, 0, -20.4559)
+transform = Transform3D(0.999956, 0, -0.00920172, 0, 1, 0, 0.00920172, 0, 0.999956, -26.6683, 0, -20.4559)
 progress = 14.5
 talking_behavior = 2
 walking_speed = 10.0
 
 [node name="Other7" parent="Characters/BusyPath2" instance=ExtResource("27_jha75")]
-transform = Transform3D(0.999819, 0, -0.0189343, 0, 1, 0, 0.0189343, 0, 0.999819, -26.6477, 0, -21.9557)
+transform = Transform3D(0.999819, 0, -0.0189332, 0, 1, 0, 0.0189332, 0, 0.999819, -26.6478, 0, -21.9558)
 progress = 16.0
 talking_behavior = 2
 walking_speed = 10.0
 
 [node name="Other8" parent="Characters/BusyPath2" instance=ExtResource("27_jha75")]
-transform = Transform3D(0.99926, 0, -0.0384226, 0, 1, 0, 0.0384226, 0, 0.99926, -26.5963, 0, -23.8052)
+transform = Transform3D(0.99926, 0, -0.0384214, 0, 1, 0, 0.0384214, 0, 0.99926, -26.5964, 0, -23.8052)
 progress = 17.85
 talking_behavior = 2
 walking_speed = 10.0
 
 [node name="Other9" parent="Characters/BusyPath2" instance=ExtResource("27_jha75")]
-transform = Transform3D(0.997557, 0, -0.0698287, 0, 1, 0, 0.0698287, 0, 0.997557, -26.5098, 0, -25.453)
+transform = Transform3D(0.997557, 0, -0.0698275, 0, 1, 0, 0.0698275, 0, 0.997557, -26.5098, 0, -25.453)
 progress = 19.5
 talking_behavior = 2
 walking_speed = 10.0
 
 [node name="Other10" parent="Characters/BusyPath2" instance=ExtResource("27_jha75")]
-transform = Transform3D(0.795699, 0, -0.605687, 0, 1, 0, 0.605687, 0, 0.795699, -24.9599, 0, -30.1988)
+transform = Transform3D(0.795699, 0, -0.605688, 0, 1, 0, 0.605688, 0, 0.795699, -24.9599, 0, -30.1988)
 progress = 24.6
 talking_behavior = 2
 walking_speed = 10.0
 
 [node name="Other11" parent="Characters/BusyPath2" instance=ExtResource("27_jha75")]
-transform = Transform3D(0.583337, 0, -0.812226, 0, 1, 0, 0.812226, 0, 0.583337, -20.8439, 0, -34.1148)
+transform = Transform3D(0.583334, 0, -0.812228, 0, 1, 0, 0.812228, 0, 0.583334, -20.8439, 0, -34.1148)
 progress = 30.3
 talking_behavior = 2
 walking_speed = 10.0
 
 [node name="Other12" parent="Characters/BusyPath2" instance=ExtResource("27_jha75")]
-transform = Transform3D(0.137895, 0, -0.990443, 0, 1, 0, 0.990443, 0, 0.137895, -17.6115, 0, -35.5883)
+transform = Transform3D(0.137897, 0, -0.990443, 0, 1, 0, 0.990443, 0, 0.137897, -17.6115, 0, -35.5883)
 progress = 33.9
 talking_behavior = 2
 walking_speed = 10.0
 
 [node name="Other13" parent="Characters/BusyPath2" instance=ExtResource("27_jha75")]
-transform = Transform3D(0.0717025, 0, -0.997422, 0, 1, 0, 0.997422, 0, 0.0717025, -16.3674, 0, -35.7134)
+transform = Transform3D(0.0717064, 0, -0.997422, 0, 1, 0, 0.997422, 0, 0.0717064, -16.3674, 0, -35.7134)
 progress = 35.15
 talking_behavior = 2
 walking_speed = 10.0
 
 [node name="Other14" parent="Characters/BusyPath2" instance=ExtResource("27_jha75")]
-transform = Transform3D(0.0219787, 0, -0.999754, 0, 1, 0, 0.999754, 0, 0.0219787, -13.6199, 0, -35.8263)
+transform = Transform3D(0.0219841, 0, -0.999753, 0, 1, 0, 0.999753, 0, 0.0219841, -13.6199, 0, -35.8263)
 progress = 37.9
 talking_behavior = 2
 walking_speed = 10.0
 
 [node name="Other15" parent="Characters/BusyPath2" instance=ExtResource("27_jha75")]
-transform = Transform3D(0.0416282, 0, -0.999128, 0, 1, 0, 0.999128, 0, 0.0416282, -9.42045, 0, -35.9166)
+transform = Transform3D(0.0416339, 0, -0.999128, 0, 1, 0, 0.999128, 0, 0.0416339, -9.42044, 0, -35.9167)
 progress = 42.1
 talking_behavior = 2
 walking_speed = 10.0
 
 [node name="Other16" parent="Characters/BusyPath2" instance=ExtResource("27_jha75")]
-transform = Transform3D(0.262107, 0, -0.965033, 0, 1, 0, 0.965033, 0, 0.262107, -7.43668, 0, -36.1186)
+transform = Transform3D(0.262114, 0, -0.965031, 0, 1, 0, 0.965031, 0, 0.262114, -7.43667, 0, -36.1186)
 progress = 44.1
 talking_behavior = 2
 walking_speed = 10.0
 
 [node name="Other17" parent="Characters/BusyPath2" instance=ExtResource("27_jha75")]
-transform = Transform3D(0.993665, 0, -0.11233, 0, 1, 0, 0.11233, 0, 0.993665, -6.45262, 0, -37.3139)
+transform = Transform3D(0.993665, 0, -0.112326, 0, 1, 0, 0.112326, 0, 0.993665, -6.45262, 0, -37.3139)
 progress = 45.75
 talking_behavior = 2
 walking_speed = 10.0
@@ -735,87 +851,97 @@ walking_speed = 10.0
 curve = SubResource("Curve3D_bsyne")
 
 [node name="Other" parent="Characters/BusyPath3" instance=ExtResource("27_jha75")]
-transform = Transform3D(-0.930736, 0, 0.365693, 0, 1, 0, -0.365693, 0, -0.930736, -3.79672, 0, -38.7403)
+transform = Transform3D(-0.930734, 0, 0.365698, 0, 1, 0, -0.365698, 0, -0.930734, -3.79672, 0, -38.7403)
 talking_behavior = 2
 walking_speed = 10.0
 
 [node name="Other2" parent="Characters/BusyPath3" instance=ExtResource("27_jha75")]
-transform = Transform3D(-0.954809, 0, 0.297219, 0, 1, 0, -0.297219, 0, -0.954809, -4.13794, 0, -36.2213)
+transform = Transform3D(-0.954806, 0, 0.29723, 0, 1, 0, -0.29723, 0, -0.954806, -4.13795, 0, -36.2213)
 progress = 2.55
 talking_behavior = 2
 walking_speed = 10.0
 
 [node name="Other3" parent="Characters/BusyPath3" instance=ExtResource("27_jha75")]
-transform = Transform3D(0.00442272, 0, 0.99999, 0, 1, 0, -0.99999, 0, 0.00442272, -6.97105, 0, -34.7425)
+transform = Transform3D(0.00442475, 0, 0.99999, 0, 1, 0, -0.99999, 0, 0.00442475, -6.97109, 0, -34.7425)
 progress = 6.15
 talking_behavior = 2
 walking_speed = 10.0
 
 [node name="Other4" parent="Characters/BusyPath3" instance=ExtResource("27_jha75")]
-transform = Transform3D(-0.0521869, 0, 0.998635, 0, 1, 0, -0.998635, 0, -0.0521869, -13.6707, 0, -34.7075)
+transform = Transform3D(-0.0521868, 0, 0.998635, 0, 1, 0, -0.998635, 0, -0.0521868, -13.6707, 0, -34.7075)
 progress = 12.85
 talking_behavior = 2
 walking_speed = 10.0
 
 [node name="Other5" parent="Characters/BusyPath3" instance=ExtResource("27_jha75")]
-transform = Transform3D(-0.5822, 0, 0.813042, 0, 1, 0, -0.813042, 0, -0.5822, -19.85, 0, -32.6802)
+transform = Transform3D(-0.582208, 0, 0.813036, 0, 1, 0, -0.813036, 0, -0.582208, -19.85, 0, -32.6802)
 progress = 19.5
 talking_behavior = 2
 walking_speed = 10.0
 
 [node name="Other6" parent="Characters/BusyPath3" instance=ExtResource("27_jha75")]
-transform = Transform3D(-0.624589, 0, 0.78095, 0, 1, 0, -0.78095, 0, -0.624589, -20.8867, 0, -31.8962)
+transform = Transform3D(-0.624598, 0, 0.780943, 0, 1, 0, -0.780943, 0, -0.624598, -20.8867, 0, -31.8962)
 progress = 20.8
 talking_behavior = 2
 walking_speed = 10.0
 
 [node name="Other7" parent="Characters/BusyPath3" instance=ExtResource("27_jha75")]
-transform = Transform3D(-0.793839, 0, 0.608124, 0, 1, 0, -0.608124, 0, -0.793839, -23.585, 0, -29.2329)
+transform = Transform3D(-0.793844, 0, 0.608117, 0, 1, 0, -0.608117, 0, -0.793844, -23.585, 0, -29.2329)
 progress = 24.6
 talking_behavior = 2
 walking_speed = 10.0
 
 [node name="Other8" parent="Characters/BusyPath3" instance=ExtResource("27_jha75")]
-transform = Transform3D(-0.997024, 0, 0.077033, 0, 1, 0, -0.077033, 0, -0.997024, -25.1028, 0, -24.0063)
+transform = Transform3D(-0.997024, 0, 0.0770325, 0, 1, 0, -0.0770325, 0, -0.997024, -25.1028, 0, -24.0063)
 progress = 30.15
 talking_behavior = 2
 walking_speed = 10.0
 
 [node name="Other9" parent="Characters/BusyPath3" instance=ExtResource("27_jha75")]
-transform = Transform3D(-0.99885, 0, 0.0478504, 0, 1, 0, -0.0478504, 0, -0.99885, -25.2754, 0, -21.1546)
+transform = Transform3D(-0.99885, 0, 0.0478501, 0, 1, 0, -0.0478501, 0, -0.99885, -25.2754, 0, -21.1546)
 progress = 33.0
 talking_behavior = 2
 walking_speed = 10.0
 
 [node name="Other10" parent="Characters/BusyPath3" instance=ExtResource("27_jha75")]
-transform = Transform3D(-0.999184, 0, 0.0402718, 0, 1, 0, -0.0402718, 0, -0.999184, -25.3299, 0, -19.9125)
+transform = Transform3D(-0.999184, 0, 0.0402713, 0, 1, 0, -0.0402713, 0, -0.999184, -25.3299, 0, -19.9125)
 progress = 34.25
 talking_behavior = 2
 walking_speed = 10.0
 
 [node name="Other11" parent="Characters/BusyPath3" instance=ExtResource("27_jha75")]
-transform = Transform3D(-0.999847, 0, 0.0171401, 0, 1, 0, -0.0171401, 0, -0.999847, -25.5081, 0, -13.372)
+transform = Transform3D(-0.999847, 0, 0.0171398, 0, 1, 0, -0.0171398, 0, -0.999847, -25.5081, 0, -13.3719)
 progress = 40.8
 talking_behavior = 2
 walking_speed = 10.0
 
 [node name="Other12" parent="Characters/BusyPath3" instance=ExtResource("27_jha75")]
-transform = Transform3D(-0.999908, 0, 0.0130834, 0, 1, 0, -0.0130834, 0, -0.999908, -25.5339, 0, -11.6652)
+transform = Transform3D(-0.999908, 0, 0.0130832, 0, 1, 0, -0.0130832, 0, -0.999908, -25.5339, 0, -11.6651)
 progress = 42.5
 talking_behavior = 2
 walking_speed = 10.0
 
 [node name="Other13" parent="Characters/BusyPath3" instance=ExtResource("27_jha75")]
-transform = Transform3D(-0.999978, 0, 0.00508769, 0, 1, 0, -0.00508769, 0, -0.999978, -25.5647, 0, -8.3253)
+transform = Transform3D(-0.999978, 0, 0.00508722, 0, 1, 0, -0.00508722, 0, -0.999978, -25.5646, 0, -8.32525)
 progress = 45.84
 talking_behavior = 2
 walking_speed = 10.0
 
 [node name="Other14" parent="Characters/BusyPath3" instance=ExtResource("27_jha75")]
-transform = Transform3D(-0.0658381, 0, -0.99782, 0, 1, 0, 0.99782, 0, -0.0658381, -24.363, 0, -5.73299)
+transform = Transform3D(-0.0658127, 0, -0.997821, 0, 1, 0, 0.997821, 0, -0.0658127, -24.3629, 0, -5.73299)
 progress = 49.14
 talking_behavior = 2
 walking_speed = 10.0
+
+[node name="BusyPath4" type="Path3D" parent="Characters"]
+curve = SubResource("Curve3D_fyjko")
+
+[node name="Other" parent="Characters/BusyPath4" instance=ExtResource("27_jha75")]
+transform = Transform3D(-0.0089337, 0, 0.99996, 0, 1, 0, -0.99996, 0, -0.0089337, 0.0519786, 0, -36.6584)
+talking_behavior = 2
+talking_text = Array[String](["It's my day off, what am I doing here...", "I though I saw a friend but they seemed busy..."])
+walking_behavior = 2
+walking_speed = 5.0
 
 [node name="Market" type="Node3D" parent="Characters"]
 
@@ -861,18 +987,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.1553, -7.15256e-07, 19.254
 [node name="Other28" parent="Characters/Market" instance=ExtResource("27_jha75")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.3338, -7.15256e-07, 19.2363)
 
+[node name="Other6" parent="Characters/Market" instance=ExtResource("27_jha75")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.53938, 2.38419e-07, 19.3408)
+
+[node name="Other8" parent="Characters/Market" instance=ExtResource("27_jha75")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.18415, 0, 20.0837)
+
 [node name="MarketPath" type="Path3D" parent="Characters"]
 curve = SubResource("Curve3D_rf8fy")
 
 [node name="Other12" parent="Characters/MarketPath" instance=ExtResource("27_jha75")]
-transform = Transform3D(-0.0136227, 0, 0.999903, 0, 1, 0, -0.999903, 0, -0.0136227, 2.2997, 0, 18.0859)
+transform = Transform3D(-0.0031214, 0, 0.999991, 0, 1, 0, -0.999991, 0, -0.0031214, 2.2933, 0, 18.141)
 progress = 0.780144
 
 [node name="MarketPath2" type="Path3D" parent="Characters"]
 curve = SubResource("Curve3D_avk6r")
 
 [node name="Other29" parent="Characters/MarketPath2" instance=ExtResource("27_jha75")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5301, -7.15256e-07, 18.2448)
+transform = Transform3D(-0.00636768, 0, -0.99998, 0, 1, 0, 0.99998, 0, -0.00636768, 6.76564, 0, 18.1507)
 
 [node name="Cubes" type="Node3D" parent="."]
 
@@ -893,12 +1025,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.0736, 0.502526, 18.3983)
 
 [node name="GettingCube6" parent="Cubes" instance=ExtResource("12_5vsno")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.9845, 0.504139, 19.0832)
-
-[node name="Other6" parent="." instance=ExtResource("27_jha75")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.53938, 2.38419e-07, 19.3408)
-
-[node name="Other8" parent="." instance=ExtResource("27_jha75")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.18415, 0, 20.0837)
 
 [connection signal="interacted" from="City/Home/HomeDoor" to="." method="_on_home_door_interacted"]
 [connection signal="consumed" from="City/Home/PlayingCube" to="." method="_on_playing_cube_consumed"]

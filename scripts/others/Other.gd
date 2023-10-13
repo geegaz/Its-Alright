@@ -57,7 +57,7 @@ func _on_interaction_interacted() -> void:
 	# Walking
 	if walking_behavior == 2:
 		walking = false
-	else:
+	elif walking_behavior == 1:
 		if talking_behavior == 0:
 			current_stop = min(current_stop + 1, walking_stops.size() - 1)
 		elif talking_behavior == 1:
@@ -71,7 +71,7 @@ func _on_text_player_finished() -> void:
 	interaction.active = true
 	
 	# Walking
-	if walking_behavior == 0:
+	if walking_behavior == 2:
 		walking = true
 
 
