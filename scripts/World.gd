@@ -1,5 +1,7 @@
 extends Node3D
 
+@export var respawn_pos : = Vector3.ZERO
+
 @onready var game_ui: = $UILayer/GameUI
 @onready var animation_player: = $AnimationPlayer
 @onready var spawner: = $City/Home/PlayingCubeSpawner
@@ -61,4 +63,7 @@ func show_end()->void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	get_tree().quit()
 	
-	
+
+func _on_bounds_trigger_exited(node) -> void:
+	var player: Node3D = node as Node3D
+	player.position = respawn_pos
