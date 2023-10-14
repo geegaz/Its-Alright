@@ -63,6 +63,7 @@ func _on_interaction_interacted() -> void:
 		elif talking_behavior == 1:
 			current_stop = (current_stop + 1) % walking_stops.size()
 		walking = true
+		
 
 
 func _on_text_player_finished() -> void:

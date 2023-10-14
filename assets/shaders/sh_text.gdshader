@@ -1,4 +1,5 @@
 shader_type canvas_item;
+render_mode unshaded;
 
 uniform float time_speed = 10.0;
 uniform float vertex_offset_multiplier : hint_range(0.0, 10.0, 0.1) = 5.0;

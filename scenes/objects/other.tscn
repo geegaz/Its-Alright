@@ -4,6 +4,7 @@
 [ext_resource type="Material" uid="uid://dbl24ok2a806b" path="res://assets/materials/mat_others.tres" id="1_mbasj"]
 [ext_resource type="Script" path="res://scripts/interaction/Interactable.gd" id="2_2woor"]
 [ext_resource type="ArrayMesh" uid="uid://d2gr8mb5cc76o" path="res://assets/models/city_others.obj" id="2_seq5w"]
+[ext_resource type="SystemFont" uid="uid://bd52f5grtei4s" path="res://assets/fonts/impact.tres" id="4_bs24j"]
 [ext_resource type="Script" path="res://scripts/others/TextPlayer.gd" id="5_opadv"]
 [ext_resource type="Material" uid="uid://dvnau2mky1cml" path="res://assets/materials/mat_other_text.tres" id="6_khubh"]
 
@@ -14,13 +15,30 @@ height = 1.8
 [sub_resource type="ViewportTexture" id="ViewportTexture_6jq2g"]
 viewport_path = NodePath("TalkingSubViewport")
 
-[sub_resource type="SystemFont" id="SystemFont_57pty"]
-font_names = PackedStringArray("Impact")
-subpixel_positioning = 0
-
 [node name="Other" type="PathFollow3D"]
 rotation_mode = 1
 script = ExtResource("1_etck6")
+
+[node name="TextPlayer" type="Node" parent="." node_paths=PackedStringArray("label")]
+script = ExtResource("5_opadv")
+label = NodePath("../TalkingSubViewport/TalkingLabel")
+
+[node name="TalkingSubViewport" type="SubViewport" parent="."]
+disable_3d = true
+transparent_bg = true
+size = Vector2i(256, 64)
+render_target_update_mode = 4
+
+[node name="TalkingLabel" type="Label" parent="TalkingSubViewport"]
+material = ExtResource("6_khubh")
+custom_minimum_size = Vector2(256, 64)
+offset_right = 256.0
+offset_bottom = 64.0
+theme_override_fonts/font = ExtResource("4_bs24j")
+theme_override_font_sizes/font_size = 48
+text = "Text"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Interaction" type="AnimatableBody3D" parent="."]
 collision_layer = 5
@@ -49,26 +67,6 @@ no_depth_test = true
 texture_filter = 0
 texture = SubResource("ViewportTexture_6jq2g")
 
-[node name="TextPlayer" type="Node" parent="." node_paths=PackedStringArray("label")]
-script = ExtResource("5_opadv")
-label = NodePath("../TalkingSubViewport/TalkingLabel")
-
-[node name="TalkingSubViewport" type="SubViewport" parent="."]
-disable_3d = true
-transparent_bg = true
-size = Vector2i(256, 64)
-
-[node name="TalkingLabel" type="Label" parent="TalkingSubViewport"]
-material = ExtResource("6_khubh")
-custom_minimum_size = Vector2(256, 64)
-offset_right = 256.0
-offset_bottom = 64.0
-theme_override_fonts/font = SubResource("SystemFont_57pty")
-theme_override_font_sizes/font_size = 48
-text = "Text"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[connection signal="interacted" from="Interaction" to="." method="_on_interaction_interacted"]
 [connection signal="changed_part" from="TextPlayer" to="." method="_on_text_player_changed_part"]
 [connection signal="finished" from="TextPlayer" to="." method="_on_text_player_finished"]
+[connection signal="interacted" from="Interaction" to="." method="_on_interaction_interacted"]

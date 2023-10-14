@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://c7uheoercchyr"]
+[gd_scene load_steps=65 format=3 uid="uid://c7uheoercchyr"]
 
 [ext_resource type="Script" path="res://scripts/World.gd" id="1_fumxa"]
 [ext_resource type="Material" uid="uid://cuqb1mo1wdr76" path="res://assets/materials/mat_city.tres" id="2_ddcng"]
@@ -9,6 +9,7 @@
 [ext_resource type="ArrayMesh" uid="uid://1rtqia3yr4hl" path="res://assets/models/home_door.obj" id="5_m2ufm"]
 [ext_resource type="Script" path="res://scripts/interaction/Interactable.gd" id="6_ajc2y"]
 [ext_resource type="PackedScene" uid="uid://bi6ph1apeh7dm" path="res://scenes/objects/playing_cube.tscn" id="7_16k0x"]
+[ext_resource type="SystemFont" uid="uid://bd52f5grtei4s" path="res://assets/fonts/impact.tres" id="7_wh6xa"]
 [ext_resource type="PackedScene" uid="uid://dfpw8hlldadnb" path="res://scenes/character.tscn" id="8_6380b"]
 [ext_resource type="Script" path="res://scripts/Spawner.gd" id="9_cy8dl"]
 [ext_resource type="PackedScene" uid="uid://d3dy0fyvq8m26" path="res://scenes/objects/getting_cube.tscn" id="12_5vsno"]
@@ -277,10 +278,10 @@ point_count = 3
 
 [sub_resource type="Curve3D" id="Curve3D_lknbt"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 14.3718, 0, -7.84208, -2.05416, 0, 0.00333023, 2.05416, 0, -0.00333023, 16.8369, 0, -5.78776, -0.896851, 0, 0.910185, 0.896851, 0, -0.910185, 40.7356, 0, -18.3876, 0.833458, 0, 1.29776, -0.833458, 0, -1.29776, 40.5986, 0, -23.0441, 0, 0, 0, 0, 0, 0, 37.4487, 0, -24.6876),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 14.3718, 0, -7.84208, -2.05416, 0, 0.00333023, 2.05416, 0, -0.00333023, 16.8369, 0, -5.78776, -0.896851, 0, 0.910185, 0.896851, 0, -0.910185, 38.0484, 0, -16.5001, 0, 0, 0, 0, 0, 0, 37.8394, 0, -19.3911),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
 }
-point_count = 5
+point_count = 4
 
 [sub_resource type="Curve3D" id="Curve3D_xu253"]
 _data = {
@@ -288,6 +289,20 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
 }
 point_count = 6
+
+[sub_resource type="Curve3D" id="Curve3D_f2xp4"]
+_data = {
+"points": PackedVector3Array(-0.194618, 0, -4.75426, 0.194618, 0, 4.75426, 38.2637, 0, -37.8162, -1.04222, 0, -1.92097, 1.04222, 0, 1.92097, 40.8611, 0, -32.3556, 0.0278053, 0, -2.41883, -0.0278053, 0, 2.41883, 41.8781, 0, -27.5848, -0.194618, 0, -0.500448, 0.194618, 0, 0.500448, 40.9328, 0, -25.2216, -0.0556107, 0, 1.97399, 0.0556107, 0, -1.97399, 42.4619, 0, -27.5848, 0.858303, 0, 2.10489, -0.858303, 0, -2.10489, 41.3924, 0, -32.4373, 0.0276909, 0, 4.74202, -0.0276909, 0, -4.74202, 38.2361, 0, -37.804),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 7
+
+[sub_resource type="Curve3D" id="Curve3D_ucdbx"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 37.3253, 0, -24.1046, 0, 0, 0, 0, 0, 0, 40.5432, 0, -23.9378, 0, 0, 0, 0, 0, 0, 37.3253, 0, -24.1046),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_fumxa")
@@ -364,6 +379,36 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 48
 text = "Objective"
 horizontal_alignment = 1
+
+[node name="Warning" type="VBoxContainer" parent="UILayer/GameUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -25.0
+offset_right = 20.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Title" type="Label" parent="UILayer/GameUI/Warning"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_wh6xa")
+theme_override_font_sizes/font_size = 128
+text = "WARNING"
+horizontal_alignment = 1
+
+[node name="Text" type="Label" parent="UILayer/GameUI/Warning"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "This game features:
+- flashing colors
+- loud sounds
+"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -632,35 +677,30 @@ curve = SubResource("Curve3D_a6ukx")
 [node name="Other" parent="Characters/FriendPath3" instance=ExtResource("27_jha75")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 22.8046, 0, -32.0096)
 talking_behavior = 2
-talking_text = Array[String](["I got it!", "Pass the ball!"])
 walking_speed = 10.0
 
 [node name="Other2" parent="Characters/FriendPath3" instance=ExtResource("27_jha75")]
 transform = Transform3D(-0.97341, 0, 0.229065, 0, 1, 0, -0.229065, 0, -0.97341, 21.552, 0, -27.3198)
 progress = 5.0
 talking_behavior = 2
-talking_text = Array[String](["I got it!", "Pass the ball!"])
 walking_speed = 10.0
 
 [node name="Other3" parent="Characters/FriendPath3" instance=ExtResource("27_jha75")]
-transform = Transform3D(-0.485815, 0, -0.874059, 0, 1, 0, 0.874059, 0, -0.485815, 21.7772, 0, -29.3213)
+transform = Transform3D(-0.485814, 0, -0.874059, 0, 1, 0, 0.874059, 0, -0.485814, 21.7772, 0, -29.3213)
 progress = 11.3
 talking_behavior = 2
-talking_text = Array[String](["I got it!", "Pass the ball!"])
 walking_speed = 10.0
 
 [node name="Other4" parent="Characters/FriendPath3" instance=ExtResource("27_jha75")]
 transform = Transform3D(0.309909, 0, -0.950764, 0, 1, 0, 0.950764, 0, 0.309909, 17.9353, 0, -29.5665)
 progress = 18.95
 talking_behavior = 2
-talking_text = Array[String](["I got it!", "Pass the ball!"])
 walking_speed = 10.0
 
 [node name="Other5" parent="Characters/FriendPath3" instance=ExtResource("27_jha75")]
 transform = Transform3D(0.987208, 0, 0.159422, 0, 1, 0, -0.159422, 0, 0.987208, 20.6623, 0, -31.3798)
 progress = 22.65
 talking_behavior = 2
-talking_text = Array[String](["I got it!", "Pass the ball!"])
 walking_speed = 10.0
 
 [node name="Busy" type="Node3D" parent="Characters"]
@@ -710,7 +750,7 @@ talking_behavior = 2
 walking_speed = 10.0
 
 [node name="Other2" parent="Characters/BusyPath" instance=ExtResource("27_jha75")]
-transform = Transform3D(0.998012, 0, -0.0629369, 0, 1, 0, 0.0629369, 0, 0.998012, -24.413, 0, -17.6304)
+transform = Transform3D(0.998012, 0, -0.0629368, 0, 1, 0, 0.0629368, 0, 0.998012, -24.413, 0, -17.6304)
 progress = 9.18
 talking_behavior = 2
 walking_speed = 10.0
@@ -1049,7 +1089,7 @@ talking_text = Array[String](["I love going to the market!", "I meet so many peo
 [node name="Other9" parent="Characters/Market" instance=ExtResource("27_jha75")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.8177, 0, 16.5249)
 talking_behavior = 1
-talking_text = Array[String](["This should be enough groceries for the week...", "You shouldn't go this way, I saw a weird man at the end there."])
+talking_text = Array[String](["This should be enough groceries for the week...", "Hm, a cube? I think the man over there is giving one away."])
 
 [node name="Other12" parent="Characters/Market" instance=ExtResource("27_jha75")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8237, 0, -1.55744)
@@ -1092,23 +1132,48 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.787, 0, 16.9994)
 talking_behavior = 1
 talking_text = Array[String](["If you're looking for a cube, what about this one?", "I didn't know what to do with it, so here it is...", "Hope it'll make you happy..."])
 
+[node name="Other2" parent="Characters/Far" instance=ExtResource("27_jha75")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.3715, 0, -28.2616)
+talking_behavior = 1
+talking_text = Array[String](["Since we have to move I'm getting rid of useless stuff.", "Take the cube, I have no use for it!"])
+
 [node name="FarPath" type="Path3D" parent="Characters"]
 curve = SubResource("Curve3D_lknbt")
 
 [node name="Other" parent="Characters/FarPath" instance=ExtResource("27_jha75")]
-transform = Transform3D(0.402473, 0, -0.915431, 0, 1, 0, 0.915431, 0, 0.402473, 35.2158, 0, -12.5835)
-progress = 27.9
+transform = Transform3D(-0.640197, 0, -0.76821, 0, 1, 0, 0.76821, 0, -0.640197, 14.3718, 0, -7.84208)
 talking_behavior = 1
-talking_text = Array[String](["Yeah, what do you want?", "There's probably a cube close.", "Think I saw someone giving one away."])
+talking_text = Array[String](["You're looking for a cube aren't you?", "I think there's one close to where I'm going.", "Do you want to walk with me?"])
 walking_behavior = 2
 
 [node name="FarPath2" type="Path3D" parent="Characters"]
 curve = SubResource("Curve3D_xu253")
 
-[node name="Other" parent="Characters/FarPath2" instance=ExtResource("27_jha75")]
-transform = Transform3D(-0.640184, 0, -0.768221, 0, 1, 0, 0.768221, 0, -0.640184, 14.3718, 0, -7.84208)
+[node name="Other2" parent="Characters/FarPath2" instance=ExtResource("27_jha75")]
+transform = Transform3D(0.40806, 0, -0.912954, 0, 1, 0, 0.912954, 0, 0.40806, 34.8045, 0, -12.4011)
+progress = 27.45
 talking_behavior = 1
-talking_text = Array[String](["You're looking for a cube aren't you?", "I think there's one close to where I'm going.", "Do you want to walk with me?"])
+talking_text = Array[String](["Yeah, what do you want?", "There's probably a cube close.", "Think I saw someone giving one away."])
+walking_behavior = 2
+
+[node name="FarPath3" type="Path3D" parent="Characters"]
+curve = SubResource("Curve3D_f2xp4")
+
+[node name="Other" parent="Characters/FarPath3" instance=ExtResource("27_jha75")]
+transform = Transform3D(-0.997383, 0, -0.0722521, 0, 1, 0, 0.0722521, 0, -0.997383, 38.2998, 0, -37.1709)
+progress = 0.65
+talking_behavior = 1
+talking_text = Array[String](["Move out the way!", "I'm busy you know.", "If you're not helping then go away."])
+walking_behavior = 2
+walking_speed = 5.0
+
+[node name="FarPath4" type="Path3D" parent="Characters"]
+curve = SubResource("Curve3D_ucdbx")
+
+[node name="Other3" parent="Characters/FarPath4" instance=ExtResource("27_jha75")]
+transform = Transform3D(-0.051782, 0, -0.998658, 0, 1, 0, 0.998658, 0, -0.051782, 37.3253, 0, -24.1046)
+talking_behavior = 1
+talking_text = Array[String](["So apparently our house is worth a lot?", "We got a very good offer from some real estate company and now we're moving out...", "I know it's for my future but still, I liked that house."])
 walking_behavior = 2
 
 [node name="Cubes" type="Node3D" parent="."]

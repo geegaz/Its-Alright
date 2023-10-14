@@ -22,11 +22,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, 0)
 shape = SubResource("CapsuleShape3D_v1xd5")
 
 [node name="GlitchUpdaterCity" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 script = ExtResource("2_32s76")
 glitch_material = ExtResource("3_dv7rt")
 glitch_speed = 2.0
 
 [node name="GlitchUpdaterOthers" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 script = ExtResource("2_32s76")
 glitch_material = ExtResource("4_4clhp")
 glitch_speed = 4.0

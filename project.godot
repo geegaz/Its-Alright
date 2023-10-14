@@ -14,7 +14,13 @@ config/name="It's Alright"
 config/description="Play with the Cube. Face the World."
 run/main_scene="res://scenes/world.tscn"
 config/features=PackedStringArray("4.1")
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/show_image=false
 config/icon="res://icon.png"
+
+[display]
+
+window/size/mode=4
 
 [input]
 
