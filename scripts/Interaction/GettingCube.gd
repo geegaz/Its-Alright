@@ -18,3 +18,5 @@ func consume_cube()->void:
 	tween.set_parallel(false)
 	tween.tween_callback(emit_signal.bind("consumed"))
 	tween.tween_callback(queue_free)
+	
+	getting_sound.play_random()

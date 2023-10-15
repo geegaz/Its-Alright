@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dj38ywqtq4fkl"]
 
-[ext_resource type="PackedScene" uid="uid://t7hk4aq50xtw" path="res://scenes/objects/other.tscn" id="1_42kcu"]
+[ext_resource type="PackedScene" uid="uid://t7hk4aq50xtw" path="res://scenes/others/other.tscn" id="1_42kcu"]
 [ext_resource type="Material" uid="uid://c82uidsqvnwew" path="res://assets/materials/mat_friend.tres" id="2_am5r2"]
 [ext_resource type="Shader" path="res://assets/shaders/sh_text.gdshader" id="3_6lugv"]
 

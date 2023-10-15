@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://c7uheoercchyr"]
+[gd_scene load_steps=74 format=3 uid="uid://c7uheoercchyr"]
 
 [ext_resource type="Script" path="res://scripts/World.gd" id="1_fumxa"]
 [ext_resource type="Material" uid="uid://cuqb1mo1wdr76" path="res://assets/materials/mat_city.tres" id="2_ddcng"]
@@ -8,12 +8,12 @@
 [ext_resource type="ArrayOccluder3D" uid="uid://dtnnii68r6l6a" path="res://scenes/world.occ" id="5_76sgf"]
 [ext_resource type="ArrayMesh" uid="uid://1rtqia3yr4hl" path="res://assets/models/home_door.obj" id="5_m2ufm"]
 [ext_resource type="Script" path="res://scripts/interaction/Interactable.gd" id="6_ajc2y"]
-[ext_resource type="PackedScene" uid="uid://bi6ph1apeh7dm" path="res://scenes/objects/playing_cube.tscn" id="7_16k0x"]
+[ext_resource type="PackedScene" uid="uid://bi6ph1apeh7dm" path="res://scenes/cubes/playing_cube.tscn" id="7_16k0x"]
 [ext_resource type="SystemFont" uid="uid://bd52f5grtei4s" path="res://assets/fonts/impact.tres" id="7_wh6xa"]
 [ext_resource type="PackedScene" uid="uid://dfpw8hlldadnb" path="res://scenes/character.tscn" id="8_6380b"]
 [ext_resource type="Script" path="res://scripts/WindowTools.gd" id="8_emebt"]
 [ext_resource type="Script" path="res://scripts/Spawner.gd" id="9_cy8dl"]
-[ext_resource type="PackedScene" uid="uid://d3dy0fyvq8m26" path="res://scenes/objects/getting_cube.tscn" id="12_5vsno"]
+[ext_resource type="PackedScene" uid="uid://d3dy0fyvq8m26" path="res://scenes/cubes/getting_cube.tscn" id="12_5vsno"]
 [ext_resource type="ArrayMesh" uid="uid://s07ybhrxtggq" path="res://assets/models/city_block1.obj" id="12_ehym4"]
 [ext_resource type="Script" path="res://scripts/GameUI.gd" id="12_slngp"]
 [ext_resource type="ArrayMesh" uid="uid://jayjeyl4geaw" path="res://assets/models/city_block2.obj" id="13_3k33g"]
@@ -28,12 +28,15 @@
 [ext_resource type="ArrayMesh" uid="uid://c6ifm2o4h5hky" path="res://assets/models/city_block10.obj" id="22_3tmy3"]
 [ext_resource type="ArrayMesh" uid="uid://dekgsv4tbnmg4" path="res://assets/models/city_block11.obj" id="23_3f7qa"]
 [ext_resource type="Script" path="res://scripts/DebugTools.gd" id="24_b0bnh"]
-[ext_resource type="PackedScene" uid="uid://dj38ywqtq4fkl" path="res://scenes/objects/friend.tscn" id="26_5lamq"]
-[ext_resource type="PackedScene" uid="uid://t7hk4aq50xtw" path="res://scenes/objects/other.tscn" id="27_jha75"]
+[ext_resource type="PackedScene" uid="uid://dj38ywqtq4fkl" path="res://scenes/others/friend.tscn" id="26_5lamq"]
+[ext_resource type="PackedScene" uid="uid://t7hk4aq50xtw" path="res://scenes/others/other.tscn" id="27_jha75"]
 [ext_resource type="Script" path="res://scripts/Trigger.gd" id="29_g864p"]
 [ext_resource type="AudioStream" uid="uid://b6efify0wf1ix" path="res://assets/sounds/city/noise.ogg" id="32_bo7vg"]
 [ext_resource type="AudioStream" uid="uid://c1ccv7vwgyk8p" path="res://assets/sounds/city/glitch.ogg" id="33_hionr"]
 [ext_resource type="Script" path="res://scripts/SoundLayer.gd" id="34_djcti"]
+[ext_resource type="AudioStream" uid="uid://bski5tvhubrx5" path="res://assets/sounds/city/plaza.ogg" id="34_r4f1c"]
+[ext_resource type="AudioStream" uid="uid://y8fxja1xc4e3" path="res://assets/sounds/city/market.ogg" id="35_b2ndh"]
+[ext_resource type="AudioStream" uid="uid://bl5mfr4meec5r" path="res://assets/sounds/city/street.ogg" id="35_e436s"]
 
 [sub_resource type="Animation" id="Animation_4bojq"]
 length = 0.001
@@ -1006,7 +1009,7 @@ talking_behavior = 2
 walking_speed = 10.0
 
 [node name="Other4" parent="Characters/BusyPath3" instance=ExtResource("27_jha75")]
-transform = Transform3D(-0.0521867, 0, 0.998635, 0, 1, 0, -0.998635, 0, -0.0521867, -13.6707, 0, -34.7075)
+transform = Transform3D(-0.0521868, 0, 0.998635, 0, 1, 0, -0.998635, 0, -0.0521868, -13.6707, 0, -34.7075)
 progress = 12.85
 talking_behavior = 2
 walking_speed = 10.0
@@ -1066,7 +1069,7 @@ talking_behavior = 2
 walking_speed = 10.0
 
 [node name="Other14" parent="Characters/BusyPath3" instance=ExtResource("27_jha75")]
-transform = Transform3D(-0.0658127, 0, -0.99782, 0, 1, 0, 0.99782, 0, -0.0658127, -24.3629, 0, -5.73299)
+transform = Transform3D(-0.0658126, 0, -0.99782, 0, 1, 0, 0.99782, 0, -0.0658126, -24.3629, 0, -5.73299)
 progress = 49.14
 talking_behavior = 2
 walking_speed = 10.0
@@ -1136,6 +1139,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.887, 0, 17.0802)
 talking_behavior = 1
 talking_text = Array[String](["Ugh, the market is always so crowded...", "Yeah there's a cube somewhere in there.", "Wish you luck then, I'm not diving in that crowd again."])
 
+[node name="Other14" parent="Characters/Market" instance=ExtResource("27_jha75")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7068, 0, 13.381)
+talking_behavior = 1
+talking_text = Array[String](["Hi Hii Hiii Hiiii!", "Are you going to the market?", "Aren't you afraid of the crowd?", "Ah, if it's for a cube I understand."])
+
 [node name="Other7" parent="Characters/Market" instance=ExtResource("27_jha75")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5106, 0, 14.5003)
 talking_behavior = 1
@@ -1150,11 +1158,6 @@ talking_text = Array[String](["This should be enough groceries for the week...",
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8237, 0, -1.55744)
 talking_behavior = 1
 talking_text = Array[String](["A cube? There's one really close I think.", "You live just around the corner, right?", "Then it's probably right behind your house, I saw it while in the market."])
-
-[node name="Friend" parent="Characters/Market" instance=ExtResource("26_5lamq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.705, 0, 13.2508)
-talking_behavior = 1
-talking_text = Array[String](["Hi Hii Hiii Hiiii!", "Going to the market?", "That's a bold move coming from you!", "I understand if it's for a cube, good luck!"])
 
 [node name="MarketPath" type="Path3D" parent="Characters"]
 curve = SubResource("Curve3D_rf8fy")
@@ -1175,12 +1178,12 @@ walking_behavior = 2
 [node name="Other5" parent="Characters/Far" instance=ExtResource("27_jha75")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.6096, 0, 2.97853)
 talking_behavior = 1
-talking_text = Array[String](["Get out of my garden!", "I don't care if it's a common space, common means it's mine too!", "These tomatoes will grow better without your ugly bum blocking the sun!"])
+talking_text = Array[String](["Get out of my garden!", "I don't care if it's a common space, common means it's mine too!", "There's no cube here, get your ass out of my tomatoes!"])
 
 [node name="Other7" parent="Characters/Far" instance=ExtResource("27_jha75")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.1926, 0, -1.27543)
 talking_behavior = 1
-talking_text = Array[String](["The crazy old man is at it again...", "Don't let him startle you if you talk to him."])
+talking_text = Array[String](["The old fart is at it again...", "Don't let him startle you if you talk to him.", "He's an asshole but he grows good tomatoes"])
 
 [node name="Other9" parent="Characters/Far" instance=ExtResource("27_jha75")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.807, 0, -0.239858)
@@ -1272,6 +1275,46 @@ volume_db = -80.0
 autoplay = true
 bus = &"Ambiance"
 script = ExtResource("34_djcti")
+
+[node name="PlazaSound" type="AudioStreamPlayer3D" parent="Sounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.2709, 1, -28.7145)
+stream = ExtResource("34_r4f1c")
+attenuation_model = 2
+autoplay = true
+max_distance = 20.0
+bus = &"Ambiance"
+
+[node name="MarketSound" type="AudioStreamPlayer3D" parent="Sounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.45814, 1, 18.2337)
+stream = ExtResource("35_b2ndh")
+attenuation_model = 2
+autoplay = true
+max_distance = 15.0
+bus = &"Ambiance"
+
+[node name="MarketSound2" type="AudioStreamPlayer3D" parent="Sounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.6012, 1, 18.2337)
+stream = ExtResource("35_b2ndh")
+attenuation_model = 2
+autoplay = true
+max_distance = 15.0
+bus = &"Ambiance"
+
+[node name="StreetSound" type="AudioStreamPlayer3D" parent="Sounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.0145, 0.999997, -34.8563)
+stream = ExtResource("35_e436s")
+attenuation_model = 2
+autoplay = true
+max_distance = 25.0
+bus = &"Ambiance"
+
+[node name="StreetSound2" type="AudioStreamPlayer3D" parent="Sounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.0897, 1, -13.8343)
+stream = ExtResource("35_e436s")
+attenuation_model = 2
+autoplay = true
+max_distance = 25.0
+bus = &"Ambiance"
 
 [node name="Triggers" type="Node3D" parent="."]
 

@@ -1,12 +1,12 @@
 extends PathFollow3D
 
-@export_subgroup("Talking")
+@export_group("Talking")
 @export_enum("Sequence", "Sequence Looped", "Random") var talking_behavior: int = 0
 @export_multiline var talking_text: Array[String] = []
 
-@export_subgroup("Walking")
+@export_group("Walking")
 @export_enum("Ignore", "Walk on Talk", "Stop on Talk") var walking_behavior: int = 0
-@export var walking_speed: = 2.0 #m/s
+@export var walking_speed: = 3.0 #m/s
 @export var walking_stops: Array[float]
 
 var walking: = false

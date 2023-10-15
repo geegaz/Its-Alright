@@ -8,7 +8,6 @@ sidechain = &"Effects"
 resource_name = "LowPassFilter"
 
 [resource]
-bus/0/send = &"Effects"
 bus/1/name = &"Ambiance"
 bus/1/solo = false
 bus/1/mute = false
