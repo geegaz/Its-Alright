@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://c7uheoercchyr"]
+[gd_scene load_steps=66 format=3 uid="uid://c7uheoercchyr"]
 
 [ext_resource type="Script" path="res://scripts/World.gd" id="1_fumxa"]
 [ext_resource type="Material" uid="uid://cuqb1mo1wdr76" path="res://assets/materials/mat_city.tres" id="2_ddcng"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bi6ph1apeh7dm" path="res://scenes/objects/playing_cube.tscn" id="7_16k0x"]
 [ext_resource type="SystemFont" uid="uid://bd52f5grtei4s" path="res://assets/fonts/impact.tres" id="7_wh6xa"]
 [ext_resource type="PackedScene" uid="uid://dfpw8hlldadnb" path="res://scenes/character.tscn" id="8_6380b"]
+[ext_resource type="Script" path="res://scripts/WindowTools.gd" id="8_emebt"]
 [ext_resource type="Script" path="res://scripts/Spawner.gd" id="9_cy8dl"]
 [ext_resource type="PackedScene" uid="uid://d3dy0fyvq8m26" path="res://scenes/objects/getting_cube.tscn" id="12_5vsno"]
 [ext_resource type="ArrayMesh" uid="uid://s07ybhrxtggq" path="res://assets/models/city_block1.obj" id="12_ehym4"]
@@ -410,6 +411,9 @@ text = "This game features:
 - loud sounds
 "
 
+[node name="WindowTools" type="Node" parent="UILayer"]
+script = ExtResource("8_emebt")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_im5et")
@@ -750,7 +754,7 @@ talking_behavior = 2
 walking_speed = 10.0
 
 [node name="Other2" parent="Characters/BusyPath" instance=ExtResource("27_jha75")]
-transform = Transform3D(0.998012, 0, -0.0629368, 0, 1, 0, 0.0629368, 0, 0.998012, -24.413, 0, -17.6304)
+transform = Transform3D(0.998012, 0, -0.0629369, 0, 1, 0, 0.0629369, 0, 0.998012, -24.413, 0, -17.6304)
 progress = 9.18
 talking_behavior = 2
 walking_speed = 10.0
@@ -1160,7 +1164,7 @@ walking_behavior = 2
 curve = SubResource("Curve3D_f2xp4")
 
 [node name="Other" parent="Characters/FarPath3" instance=ExtResource("27_jha75")]
-transform = Transform3D(-0.997383, 0, -0.0722521, 0, 1, 0, 0.0722521, 0, -0.997383, 38.2998, 0, -37.1709)
+transform = Transform3D(-0.997383, 0, -0.072254, 0, 1, 0, 0.072254, 0, -0.997383, 38.2997, 0, -37.1709)
 progress = 0.65
 talking_behavior = 1
 talking_text = Array[String](["Move out the way!", "I'm busy you know.", "If you're not helping then go away."])
@@ -1171,7 +1175,7 @@ walking_speed = 5.0
 curve = SubResource("Curve3D_ucdbx")
 
 [node name="Other3" parent="Characters/FarPath4" instance=ExtResource("27_jha75")]
-transform = Transform3D(-0.051782, 0, -0.998658, 0, 1, 0, 0.998658, 0, -0.051782, 37.3253, 0, -24.1046)
+transform = Transform3D(-0.0517659, 0, -0.998659, 0, 1, 0, 0.998659, 0, -0.0517659, 37.3253, 0, -24.1046)
 talking_behavior = 1
 talking_text = Array[String](["So apparently our house is worth a lot?", "We got a very good offer from some real estate company and now we're moving out...", "I know it's for my future but still, I liked that house."])
 walking_behavior = 2
