@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://d3dy0fyvq8m26"]
+[gd_scene load_steps=7 format=3 uid="uid://d3dy0fyvq8m26"]
 
 [ext_resource type="Script" path="res://scripts/interaction/GettingCube.gd" id="1_f8wsx"]
 [ext_resource type="ArrayMesh" uid="uid://clgao0n5yhiwr" path="res://assets/models/home_cube.obj" id="2_68q2k"]
 [ext_resource type="Material" uid="uid://rghu83iy6ixp" path="res://assets/materials/mat_cube.tres" id="2_q2i8i"]
+[ext_resource type="AudioStream" uid="uid://bscda3klojfso" path="res://assets/sounds/cube/pickup.ogg" id="4_e0y8c"]
 [ext_resource type="Script" path="res://scripts/AudioStreamPlayer3DRandom.gd" id="4_r6luo"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_tqu6d"]
@@ -25,6 +26,7 @@ visible = false
 shape = SubResource("ConvexPolygonShape3D_tqu6d")
 
 [node name="GettingSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_e0y8c")
 script = ExtResource("4_r6luo")
 min_pitch = 0.8
 max_pitch = 1.2
