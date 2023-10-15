@@ -1,3 +1,4 @@
+class_name Trigger
 extends Area3D
 
 enum TriggerType {

@@ -1,0 +1,27 @@
+[gd_resource type="AudioBusLayout" load_steps=3 format=3 uid="uid://bm6plq4ox5axp"]
+
+[sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_hybmo"]
+resource_name = "Compressor"
+sidechain = &"Effects"
+
+[sub_resource type="AudioEffectLowPassFilter" id="AudioEffectLowPassFilter_y4h3b"]
+resource_name = "LowPassFilter"
+
+[resource]
+bus/0/send = &"Effects"
+bus/1/name = &"Ambiance"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = 0.0
+bus/1/send = &"Master"
+bus/1/effect/0/effect = SubResource("AudioEffectCompressor_hybmo")
+bus/1/effect/0/enabled = true
+bus/1/effect/1/effect = SubResource("AudioEffectLowPassFilter_y4h3b")
+bus/1/effect/1/enabled = true
+bus/2/name = &"Effects"
+bus/2/solo = false
+bus/2/mute = false
+bus/2/bypass_fx = false
+bus/2/volume_db = 0.0
+bus/2/send = &"Master"

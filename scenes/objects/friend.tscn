@@ -4,22 +4,22 @@
 [ext_resource type="Material" uid="uid://c82uidsqvnwew" path="res://assets/materials/mat_friend.tres" id="2_am5r2"]
 [ext_resource type="Shader" path="res://assets/shaders/sh_text.gdshader" id="3_6lugv"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_dmn4s"]
-viewport_path = NodePath("TalkingSubViewport")
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p385c"]
 shader = ExtResource("3_6lugv")
 shader_parameter/time_speed = 10.0
 shader_parameter/vertex_offset_multiplier = 0.0
 shader_parameter/uv_offset_multiplier = 0.01
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_dmn4s"]
+viewport_path = NodePath("TalkingSubViewport")
+
 [node name="Friend" instance=ExtResource("1_42kcu")]
-
-[node name="MeshInstance3D" parent="." index="1"]
-material_override = ExtResource("2_am5r2")
-
-[node name="Sprite3D" parent="." index="3"]
-texture = SubResource("ViewportTexture_dmn4s")
 
 [node name="TalkingLabel" parent="TalkingSubViewport" index="0"]
 material = SubResource("ShaderMaterial_p385c")
+
+[node name="MeshInstance3D" parent="." index="3"]
+material_override = ExtResource("2_am5r2")
+
+[node name="Sprite3D" parent="." index="5"]
+texture = SubResource("ViewportTexture_dmn4s")

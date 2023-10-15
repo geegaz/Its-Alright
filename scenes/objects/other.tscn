@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://t7hk4aq50xtw"]
+[gd_scene load_steps=21 format=3 uid="uid://t7hk4aq50xtw"]
 
 [ext_resource type="Script" path="res://scripts/others/Other.gd" id="1_etck6"]
 [ext_resource type="Material" uid="uid://dbl24ok2a806b" path="res://assets/materials/mat_others.tres" id="1_mbasj"]
@@ -7,6 +7,17 @@
 [ext_resource type="SystemFont" uid="uid://bd52f5grtei4s" path="res://assets/fonts/impact.tres" id="4_bs24j"]
 [ext_resource type="Script" path="res://scripts/others/TextPlayer.gd" id="5_opadv"]
 [ext_resource type="Material" uid="uid://dvnau2mky1cml" path="res://assets/materials/mat_other_text.tres" id="6_khubh"]
+[ext_resource type="Script" path="res://scripts/AudioStreamPlayer3DRandom.gd" id="8_ytkc8"]
+[ext_resource type="AudioStream" uid="uid://d0ene0rbph508" path="res://assets/sounds/others/speech-001.ogg" id="9_p10ra"]
+[ext_resource type="AudioStream" uid="uid://cxy6cjsrnuyx7" path="res://assets/sounds/others/speech-002.ogg" id="10_e6lsy"]
+[ext_resource type="AudioStream" uid="uid://cht8ihy6aiytt" path="res://assets/sounds/others/speech-003.ogg" id="11_vgl8m"]
+[ext_resource type="AudioStream" uid="uid://d1fcis44stgjk" path="res://assets/sounds/others/speech-004.ogg" id="12_grwj3"]
+[ext_resource type="AudioStream" uid="uid://dddey18kvu7cj" path="res://assets/sounds/others/speech-005.ogg" id="13_ncccj"]
+[ext_resource type="AudioStream" uid="uid://d0ai00f4gby4y" path="res://assets/sounds/others/speech-006.ogg" id="14_ae7ti"]
+[ext_resource type="AudioStream" uid="uid://bl4k21sjjcdqb" path="res://assets/sounds/others/speech-007.ogg" id="15_dmo3f"]
+[ext_resource type="AudioStream" uid="uid://cynj8st6ffr3g" path="res://assets/sounds/others/speech-008.ogg" id="16_1j2ok"]
+[ext_resource type="AudioStream" uid="uid://cldmd5sal4mvf" path="res://assets/sounds/others/speech-009.ogg" id="17_yf1gy"]
+[ext_resource type="AudioStream" uid="uid://dgm8v04rl2on0" path="res://assets/sounds/others/speech-010.ogg" id="18_2wjsm"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mup3r"]
 radius = 0.4
@@ -55,9 +66,14 @@ layers = 2
 material_override = ExtResource("1_mbasj")
 mesh = ExtResource("2_seq5w")
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+[node name="SpeechSound" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
 max_distance = 5.0
+bus = &"Effects"
+script = ExtResource("8_ytkc8")
+streams = Array[AudioStream]([ExtResource("9_p10ra"), ExtResource("10_e6lsy"), ExtResource("11_vgl8m"), ExtResource("12_grwj3"), ExtResource("13_ncccj"), ExtResource("14_ae7ti"), ExtResource("15_dmo3f"), ExtResource("16_1j2ok"), ExtResource("17_yf1gy"), ExtResource("18_2wjsm")])
+min_pitch = 0.8
+max_pitch = 1.2
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)

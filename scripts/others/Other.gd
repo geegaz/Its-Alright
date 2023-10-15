@@ -18,7 +18,7 @@ var text_indexes: Array
 @onready var text_player: = $TextPlayer
 @onready var text_sprite: = $Sprite3D
 @onready var interaction: = $Interaction
-@onready var audio_player: = $AudioStreamPlayer3D
+@onready var speech_sound: = $SpeechSound
 
 func _ready() -> void:
 	text_player.stop()
@@ -77,4 +77,4 @@ func _on_text_player_finished() -> void:
 
 
 func _on_text_player_changed_part() -> void:
-	pass # Replace with function body.
+	speech_sound.play_random()
